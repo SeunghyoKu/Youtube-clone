@@ -1,7 +1,6 @@
 const elapsedTime = (publishedAt) => {
   const elapsedMs = new Date().getTime() - new Date(publishedAt).getTime();
   const elapsedDate = elapsedMs / 1000 / 60 / 60 / 24;
-  console.log(elapsedDate);
 
   if (elapsedDate > 365) {
     return `${Math.floor(elapsedDate / 365)}년 전`;
