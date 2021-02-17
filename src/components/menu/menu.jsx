@@ -8,7 +8,7 @@ const Menu = (props) => {
   //   };
   return (
     <div className={styles.menuBar}>
-      <div className={styles.menu}>
+      <div className={styles.menu + " " + styles.menuHome}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"

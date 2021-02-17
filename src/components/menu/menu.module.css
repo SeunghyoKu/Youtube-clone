@@ -18,8 +18,17 @@
   flex-direction: row;
   align-items: center;
   font-size: 14px;
+  cursor: pointer;
 }
 
 .menuIcon {
   margin-right: 24px;
+}
+
+.menuHome {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
