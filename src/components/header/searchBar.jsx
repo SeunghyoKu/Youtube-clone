@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./header.module.css";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
+  const inputRef = useRef();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const searchText = inputRef.current.value;
+
+    searchText && props.handleSearch(searchText);
+    inputRef.current.value = "";
+  };
+
   return (
     <div className={styles.searchBar}>
       <form className={styles.searchForm}>
-        <input className={styles.searchInput} type="text" placeholder="검색" />
-        <button className={styles.searchButton}>
+        <input
+          className={styles.searchInput}
+          type="text"
+          ref={inputRef}
+          placeholder="검색"
+        />
+        <button className={styles.searchButton} onClick={handleSubmit}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

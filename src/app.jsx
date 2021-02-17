@@ -9,7 +9,7 @@ function App() {
   const [videos, setVideos] = useState([]);
 
   const getVideos = async () => {
-    const maxResults = 24;
+    const maxResults = 36;
     try {
       await axios
         .get(
@@ -28,9 +28,25 @@ function App() {
     getVideos();
   }, []);
 
+  const handleSearh = async (searchText) => {
+    const maxResults = 25;
+
+    try {
+      await axios
+        .get(
+          `https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY}&part=snippet&maxResults=${maxResults}&q=${searchText}`
+        )
+        .then((result) => {
+          console.log(result);
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
-      <Header />
+      <Header handleSearch={handleSearh} />
       <Body videoList={videos} />
     </>
   );
