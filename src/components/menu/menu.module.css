@@ -1,0 +1,21 @@
+.menuBar {
+  float: left;
+  width: 240px;
+  height: 100%;
+  padding: 12px 0px 12px 0px;
+  background-color: rgba(33, 33, 33, 0.98);
+  color: white;
+}
+
+.menu {
+  height: 40px;
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 14px;
+}
+
+.menuIcon {
+  margin-right: 24px;
+}
