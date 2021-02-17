@@ -1,5 +1,9 @@
 .menuBar {
   float: left;
+  position: fixed;
+  top: 59px;
+  left: 0px;
+  bottom: 0px;
   width: 240px;
   height: 100%;
   padding: 12px 0px 12px 0px;
