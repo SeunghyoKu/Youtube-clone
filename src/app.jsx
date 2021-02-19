@@ -47,9 +47,7 @@ function App() {
 
   const handleMenuClick = () => {
     const reversedState = !menuOpened;
-    console.log(menuOpened);
     setMenuOpened(reversedState);
-    console.log(menuOpened);
   };
 
   return (
