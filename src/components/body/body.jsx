@@ -1,5 +1,5 @@
 import React from "react";
-import Menu from "../menu/menu";
+import Menu from "./menu/menu";
 import Videos from "../videoList/videoList";
 import styles from "./body.module.css";
 
