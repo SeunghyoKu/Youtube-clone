@@ -9,7 +9,7 @@ const Header = (props) => {
   return (
     <>
       <header className={styles.headerBar}>
-        <Logo />
+        <Logo handleMenuClick={props.handleMenuClick} />
         <SearchBar handleSearch={props.handleSearch} />
         <HeaderRightIcons />
       </header>

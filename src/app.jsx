@@ -7,6 +7,7 @@ const axios = require("axios");
 
 function App() {
   const [videos, setVideos] = useState([]);
+  const [menuOpened, setMenuOpened] = useState(true);
 
   const getVideos = async () => {
     const maxResults = 36;
@@ -44,10 +45,17 @@ function App() {
     }
   };
 
+  const handleMenuClick = () => {
+    const reversedState = !menuOpened;
+    console.log(menuOpened);
+    setMenuOpened(reversedState);
+    console.log(menuOpened);
+  };
+
   return (
     <>
-      <Header handleSearch={handleSearh} />
-      <Body videoList={videos} />
+      <Header handleSearch={handleSearh} handleMenuClick={handleMenuClick} />
+      <Body videoList={videos} menuOpened={menuOpened} />
     </>
   );
 }

@@ -6,7 +6,7 @@ import styles from "./body.module.css";
 const Body = (props) => {
   return (
     <body className={styles.body}>
-      <Menu />
+      <Menu menuOpened={props.menuOpened} />
       <Videos videoList={props} />
     </body>
   );

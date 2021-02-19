@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./header.module.css";
 
 const Logo = (props) => {
@@ -8,6 +8,7 @@ const Logo = (props) => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         className={styles.icons + " " + styles.menuIcon}
+        onClick={props.handleMenuClick}
       >
         <g className={styles.icons + " " + styles.menuIcon} fill="#FFFFFF">
           <path
@@ -17,11 +18,14 @@ const Logo = (props) => {
           ></path>
         </g>
       </svg>
-      <img
-        className={styles.logo}
-        src="./images/logo_dark.png"
-        alt="logo"
-      ></img>
+      <a href="http://localhost:3000/">
+        <img
+          className={styles.logo}
+          src="./images/logo_dark.png"
+          alt="logo"
+        ></img>
+      </a>
+
       <span className={styles.language}>KR</span>
     </div>
   );
