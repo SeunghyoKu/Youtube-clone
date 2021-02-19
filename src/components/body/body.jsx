@@ -7,7 +7,7 @@ const Body = (props) => {
   return (
     <body className={styles.body}>
       <Menu menuOpened={props.menuOpened} />
-      <Videos videoList={props} />
+      <Videos videoList={props.videoList} menuOpened={props.menuOpened} />
     </body>
   );
 };

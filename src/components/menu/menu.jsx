@@ -2,20 +2,28 @@ import React from "react";
 import styles from "./menu.module.css";
 
 const Menu = (props) => {
-  //   const handleClickMenu = () => {
-  //     const isOpen = props;
-  //     console.log(isOpen);
-  //   };
+  const opened = props.menuOpened;
+
   return (
-    <div className={styles.menuBar}>
-      <div className={styles.menu + " " + styles.menuHome}>
+    <div
+      className={
+        opened ? styles.menuBar : styles.menuBar + " " + styles.menuBarClosed
+      }
+    >
+      <div
+        className={
+          opened
+            ? styles.menu + " " + styles.menuHome
+            : styles.menu + " " + styles.menuClosed
+        }
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
-          className={styles.menuIcon}
+          className={opened ? styles.menuIcon : styles.menuIconClosed}
         >
-          <g className={styles.menuIcon} fill="#FFFFFF">
+          <g className={styles.menuIcon}>
             <path
               d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8"
               className={styles.menuIcon}
@@ -23,14 +31,16 @@ const Menu = (props) => {
             ></path>
           </g>
         </svg>
-        <span className={styles.menuChar}>홈</span>
+        <span className={opened ? "" : styles.menuCharClosed}>홈</span>
       </div>
-      <div className={styles.menu}>
+      <div
+        className={opened ? styles.menu : styles.menu + " " + styles.menuClosed}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
-          className={styles.menuIcon}
+          className={opened ? styles.menuIcon : styles.menuIconClosed}
         >
           <g className={styles.menuIcon} fill="#909090">
             <path
@@ -40,14 +50,16 @@ const Menu = (props) => {
             ></path>
           </g>
         </svg>
-        <span className={styles.menuChar}>인기</span>
+        <span className={opened ? "" : styles.menuCharClosed}>인기</span>
       </div>
-      <div className={styles.menu}>
+      <div
+        className={opened ? styles.menu : styles.menu + " " + styles.menuClosed}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
-          className={styles.menuIcon}
+          className={opened ? styles.menuIcon : styles.menuIconClosed}
         >
           <g className={styles.menuIcon} fill="#909090">
             <path
@@ -57,15 +69,17 @@ const Menu = (props) => {
             ></path>
           </g>
         </svg>
-        <span className={styles.menuChar}>구독</span>
+        <span className={opened ? "" : styles.menuCharClosed}>구독</span>
       </div>
 
-      <div className={styles.menu}>
+      <div
+        className={opened ? styles.menu : styles.menu + " " + styles.menuClosed}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
-          className={styles.menuIcon}
+          className={opened ? styles.menuIcon : styles.menuIconClosed}
         >
           <g className={styles.menuIcon} fill="#909090">
             <path
@@ -75,15 +89,17 @@ const Menu = (props) => {
             ></path>
           </g>
         </svg>
-        <span className={styles.menuChar}>Originals</span>
+        <span className={opened ? "" : styles.menuCharClosed}>Originals</span>
       </div>
 
-      <div className={styles.menu}>
+      <div
+        className={opened ? styles.menu : styles.menu + " " + styles.menuClosed}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           width="24"
-          className={styles.menuIcon}
+          className={opened ? styles.menuIcon : styles.menuIconClosed}
         >
           <g className={styles.menuIcon} fill="#909090">
             <path
@@ -98,7 +114,9 @@ const Menu = (props) => {
             ></path>
           </g>
         </svg>
-        <span className={styles.menuChar}>Youtube Music</span>
+        <span className={opened ? "" : styles.menuCharClosed}>
+          Youtube Music
+        </span>
       </div>
     </div>
   );

@@ -11,6 +11,10 @@
   color: white;
 }
 
+.menuBarClosed {
+  width: 72px;
+}
+
 .menu {
   height: 40px;
   padding: 0px 24px 0px 24px;
@@ -21,8 +25,23 @@
   cursor: pointer;
 }
 
+.menuClosed {
+  height: 74px;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menuCharClosed {
+  font-size: 10px;
+  text-align: center;
+}
+
 .menuIcon {
   margin-right: 24px;
+}
+
+.menuIconClosed {
+  margin: 0px 0px 6px 0px;
 }
 
 .menuHome {

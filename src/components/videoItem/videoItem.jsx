@@ -3,11 +3,15 @@ import styles from "./videoItem.module.css";
 import getElapsedTime from "../../utils/getElapsedTime";
 
 const Video = (props) => {
-  //const { id } = props.video;
   const { thumbnails, title, channelTitle, publishedAt } = props.video;
-  // 225 : 202
+  const menuOpened = props.menuOpened;
+
   return (
-    <li className={styles.video}>
+    <li
+      className={
+        menuOpened ? styles.video : styles.video + " " + styles.videoClosed
+      }
+    >
       <img
         className={styles.thumbnails}
         src={thumbnails.medium.url}

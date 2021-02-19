@@ -5,6 +5,10 @@
   margin: 0px 8px 40px 8px;
 }
 
+.videoClosed {
+  width: calc(100% / 5 - 24px);
+}
+
 .videoInfo {
   padding: 0px 24px 0px 0px;
   font-size: 14px;
