@@ -10,7 +10,7 @@ function App() {
   const [menuOpened, setMenuOpened] = useState(true);
 
   const getVideos = async () => {
-    const maxResults = 36;
+    const maxResults = 40;
     try {
       await axios
         .get(
@@ -30,7 +30,7 @@ function App() {
   }, []);
 
   const handleSearh = async (searchText) => {
-    const maxResults = 25;
+    const maxResults = 40;
 
     try {
       await axios
@@ -38,7 +38,8 @@ function App() {
           `https://www.googleapis.com/youtube/v3/search?key=${process.env.REACT_APP_API_KEY}&part=snippet&maxResults=${maxResults}&q=${searchText}`
         )
         .then((result) => {
-          console.log(result);
+          const { items } = result.data;
+          setVideos(items);
         });
     } catch (error) {
       console.error(error);
