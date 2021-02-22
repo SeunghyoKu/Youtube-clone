@@ -3,12 +3,21 @@ import styles from "./header.module.css";
 
 const SearchBar = (props) => {
   const inputRef = useRef();
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     const searchText = inputRef.current.value;
-
     searchText && props.handleSearch(searchText);
-    inputRef.current.value = "";
+  };
+
+  const onClick = (e) => {
+    e.preventDefault();
+    handleSubmit();
+  };
+
+  const onKeyPress = (e) => {
+    e.preventDefault();
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
   };
 
   return (
@@ -20,7 +29,11 @@ const SearchBar = (props) => {
           ref={inputRef}
           placeholder="검색"
         />
-        <button className={styles.searchButton} onClick={handleSubmit}>
+        <button
+          className={styles.searchButton}
+          onClick={onClick}
+          onKeyPress={onKeyPress}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
