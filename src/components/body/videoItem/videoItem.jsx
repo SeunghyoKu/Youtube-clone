@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
 
@@ -11,13 +11,19 @@ const Video = (props) => {
     description,
   } = props.video.snippet;
   const { kind } = props.video.id;
-  const isVideo = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "video";
+  const isChannel = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "channel";
   const { menuOpened, searched } = props;
   const isNewVideo = publishedAt && /시간/.exec(getElapsedTime(publishedAt));
+  const [subscribed, setSuscirbed] = useState(false);
+
+  const onClick = () => {
+    const subscribeStatus = subscribed;
+    setSuscirbed(!subscribeStatus);
+  };
 
   return searched ? (
     <li className={styles.searchedVideo}>
-      {isVideo ? (
+      {!isChannel ? (
         <img
           className={styles.searchedThumbnails}
           src={thumbnails.medium.url}
@@ -35,8 +41,12 @@ const Video = (props) => {
 
       <div className={styles.videoInfo + " " + styles.videoInfoSearched}>
         <h3 className={styles.searchedTitle}>{title}</h3>
-        {isVideo ? <p className={styles.channelTitle}>{channelTitle}</p> : ""}
-        {isVideo ? (
+        {!isChannel ? (
+          <p className={styles.channelTitle}>{channelTitle}</p>
+        ) : (
+          ""
+        )}
+        {!isChannel ? (
           <p className={styles.elapsedTime}>{getElapsedTime(publishedAt)}</p>
         ) : (
           ""
@@ -48,7 +58,25 @@ const Video = (props) => {
           ""
         )}
       </div>
-      {!isVideo ? <button className={styles.subscribe}>구독</button> : ""}
+      {isChannel ? (
+        subscribed ? (
+          <button
+            className={styles.subscribe + " " + styles.notSubscribed}
+            onClick={onClick}
+          >
+            구독
+          </button>
+        ) : (
+          <button
+            className={styles.subscribe + " " + styles.subscribed}
+            onClick={onClick}
+          >
+            구독중
+          </button>
+        )
+      ) : (
+        ""
+      )}
     </li>
   ) : (
     <li
