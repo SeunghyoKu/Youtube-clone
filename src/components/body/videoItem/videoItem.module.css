@@ -27,8 +27,74 @@
 }
 
 .channelTitle,
-.elapsedTime {
+.elapsedTime,
+.description {
   color: #aaaaaa;
   margin: 0px;
   padding: 1px;
+}
+
+/* searched */
+.searchedVideo {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  height: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 14px;
+}
+
+.videoInfoSearched {
+  width: 55%;
+  margin-left: 14px;
+  font-size: 13px;
+}
+
+.searchedThumbnails {
+  width: 320px;
+}
+
+.imageBox {
+  text-align: center;
+  width: 320px;
+}
+
+.channelProfile {
+  border-radius: 50%;
+  width: 50%;
+}
+
+.searchedTitle {
+  color: white;
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0px;
+}
+
+.description {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+
+.newVideoTag {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  color: #aaaaaa;
+  font-size: 12px;
+  padding: 0px 3px 0px 3px;
+}
+
+.subscribe {
+  height: 40px;
+  width: 72px;
+  background-color: #cc0000;
+  color: white;
+  border: none;
+  border-radius: 5%;
+  padding: 10px 16px 10px 160x;
+  font-size: 14px;
+  margin: auto 0px auto 0px;
 }
