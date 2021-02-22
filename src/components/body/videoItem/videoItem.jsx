@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./videoItem.module.css";
-import getElapsedTime from "../../utils/getElapsedTime";
+import getElapsedTime from "../../../utils/getElapsedTime";
 
 const Video = (props) => {
   const { thumbnails, title, channelTitle, publishedAt } = props.video;
