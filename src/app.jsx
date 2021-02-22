@@ -5,6 +5,7 @@ import Body from "./components/body/body";
 function App({ youtubeAPI }) {
   const [videos, setVideos] = useState([]);
   const [menuOpened, setMenuOpened] = useState(true);
+  const [searched, setSearched] = useState(false);
 
   const getVideos = async () => {
     const videos = await youtubeAPI.getFamousVideos();
@@ -27,8 +28,12 @@ function App({ youtubeAPI }) {
 
   return (
     <>
-      <Header handleSearch={handleSearh} handleMenuClick={handleMenuClick} />
-      <Body videoList={videos} menuOpened={menuOpened} />
+      <Header
+        handleSearch={handleSearh}
+        handleMenuClick={handleMenuClick}
+        setSearched={setSearched}
+      />
+      <Body videoList={videos} menuOpened={menuOpened} searched={searched} />
     </>
   );
 }

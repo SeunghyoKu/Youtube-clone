@@ -3,7 +3,7 @@ import Video from "../videoItem/videoItem";
 import styles from "./videoList.module.css";
 
 const Videos = (props) => {
-  const { videoList, menuOpened } = props;
+  const { videoList, menuOpened, searched } = props;
 
   return (
     <main className={styles.main}>
@@ -15,7 +15,7 @@ const Videos = (props) => {
         }
       >
         {videoList.map((video) => (
-          <Video video={video.snippet} menuOpened={menuOpened} />
+          <Video video={video} menuOpened={menuOpened} searched={searched} />
         ))}
       </ul>
     </main>

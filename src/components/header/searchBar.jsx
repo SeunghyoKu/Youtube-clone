@@ -3,9 +3,11 @@ import styles from "./header.module.css";
 
 const SearchBar = (props) => {
   const inputRef = useRef();
+
   const handleSubmit = () => {
     const searchText = inputRef.current.value;
     searchText && props.handleSearch(searchText);
+    props.setSearched(true);
   };
 
   const onClick = (e) => {

@@ -10,7 +10,10 @@ const Header = (props) => {
     <>
       <header className={styles.headerBar}>
         <Logo handleMenuClick={props.handleMenuClick} />
-        <SearchBar handleSearch={props.handleSearch} />
+        <SearchBar
+          handleSearch={props.handleSearch}
+          setSearched={props.setSearched}
+        />
         <HeaderRightIcons />
       </header>
     </>
