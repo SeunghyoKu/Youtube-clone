@@ -17,6 +17,7 @@ function App({ youtubeAPI }) {
   }, []);
 
   const handleSearh = async (searchText) => {
+    setVideos([]);
     const videos = await youtubeAPI.getSearchWithText(searchText);
     setVideos(videos);
   };
