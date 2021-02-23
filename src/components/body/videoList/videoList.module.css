@@ -1,6 +1,4 @@
 .videoList {
-  position: static;
-  top: 59px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
