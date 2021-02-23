@@ -5,6 +5,11 @@
   margin: 0px 8px 40px 8px;
 }
 
+.video:hover,
+.searchedVideo:hover {
+  cursor: pointer;
+}
+
 .videoClosed {
   width: calc(100% / 5 - 24px);
 }

@@ -10,7 +10,7 @@ const Video = (props) => {
     publishedAt,
     description,
   } = props.video.snippet;
-  const { kind } = props.video.id;
+  const { kind, videoId } = props.video.id;
   const isChannel = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "channel";
   const { menuOpened, searched } = props;
   const isNewVideo = publishedAt && /시간/.exec(getElapsedTime(publishedAt));
@@ -21,8 +21,13 @@ const Video = (props) => {
     setSuscirbed(!subscribeStatus);
   };
 
+  const onVideoClick = () => {
+    const id = videoId !== undefined ? videoId : props.video.id;
+    props.setVideoOpened(id);
+  };
+
   return searched ? (
-    <li className={styles.searchedVideo}>
+    <li className={styles.searchedVideo} onClick={onVideoClick}>
       {!isChannel ? (
         <img
           className={styles.searchedThumbnails}
@@ -83,6 +88,7 @@ const Video = (props) => {
       className={
         menuOpened ? styles.video : styles.video + " " + styles.videoClosed
       }
+      onClick={onVideoClick}
     >
       <img
         className={styles.thumbnails}

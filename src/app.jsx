@@ -6,6 +6,7 @@ function App({ youtubeAPI }) {
   const [videos, setVideos] = useState([]);
   const [menuOpened, setMenuOpened] = useState(true);
   const [searched, setSearched] = useState(false);
+  const [videoOpened, setVideoOpened] = useState(null);
 
   const getVideos = async () => {
     const videos = await youtubeAPI.getFamousVideos();
@@ -18,6 +19,7 @@ function App({ youtubeAPI }) {
 
   const handleSearh = async (searchText) => {
     setVideos([]);
+    setVideoOpened(null);
     const videos = await youtubeAPI.getSearchWithText(searchText);
     setVideos(videos);
   };
@@ -34,7 +36,13 @@ function App({ youtubeAPI }) {
         handleMenuClick={handleMenuClick}
         setSearched={setSearched}
       />
-      <Body videoList={videos} menuOpened={menuOpened} searched={searched} />
+      <Body
+        videoList={videos}
+        menuOpened={menuOpened}
+        searched={searched}
+        videoOpened={videoOpened}
+        setVideoOpened={setVideoOpened}
+      />
     </>
   );
 }
