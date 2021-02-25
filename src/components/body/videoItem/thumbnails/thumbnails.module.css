@@ -1,0 +1,13 @@
+.searchedThumbnails {
+  width: 320px;
+}
+
+.imageBox {
+  text-align: center;
+  width: 320px;
+}
+
+.channelProfile {
+  border-radius: 50%;
+  width: 50%;
+}
