@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SubscribedButton from "../subscribeButton/subscribeButton";
+import VideoItemInBoardView from "./videoItemInBoardView";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
 
@@ -11,23 +12,18 @@ const Video = (props) => {
     publishedAt,
     description,
   } = props.video.snippet;
-  const { kind, videoId } = props.video.id;
+  const { kind } = props.video.id;
   const isChannel = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "channel";
-  const { menuOpened, searched } = props;
+  const { menuOpened, searched, videoOpened } = props;
   const isNewVideo = publishedAt && /시간/.exec(getElapsedTime(publishedAt));
-  const [subscribed, setSuscirbed] = useState(false);
 
-  const onClick = () => {
-    const subscribeStatus = subscribed;
-    setSuscirbed(!subscribeStatus);
-  };
+  const isListView = !!searched || !!videoOpened;
 
   const onVideoClick = () => {
-    const id = videoId !== undefined ? videoId : props.video.id;
-    props.setVideoOpened(id);
+    props.setVideoOpened(props.video);
   };
 
-  return searched ? (
+  return isListView ? (
     <li className={styles.searchedVideo} onClick={onVideoClick}>
       {!isChannel ? (
         <img
@@ -67,23 +63,14 @@ const Video = (props) => {
       {isChannel ? <SubscribedButton /> : ""}
     </li>
   ) : (
-    <li
-      className={
-        menuOpened ? styles.video : styles.video + " " + styles.videoClosed
-      }
-      onClick={onVideoClick}
-    >
-      <img
-        className={styles.thumbnails}
-        src={thumbnails.medium.url}
-        alt="thumbnails"
-      ></img>
-      <div className={styles.videoInfo}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.channelTitle}>{channelTitle}</p>
-        <p className={styles.elapsedTime}>{getElapsedTime(publishedAt)}</p>
-      </div>
-    </li>
+    <VideoItemInBoardView
+      menuOpened={menuOpened}
+      onVideoClick={onVideoClick}
+      thumbnails={thumbnails.medium.url}
+      title={title}
+      channelTitle={channelTitle}
+      elapsedTime={getElapsedTime(publishedAt)}
+    />
   );
 };
 

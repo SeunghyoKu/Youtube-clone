@@ -16,7 +16,10 @@ const Body = (props) => {
         }
       >
         {!!props.videoOpened ? (
-          <VideoDetail id={props.videoOpened} menuOpened={props.menuOpened} />
+          <VideoDetail
+            video={props.videoOpened}
+            menuOpened={props.menuOpened}
+          />
         ) : (
           ""
         )}
