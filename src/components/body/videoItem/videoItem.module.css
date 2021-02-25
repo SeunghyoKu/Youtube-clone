@@ -33,35 +33,6 @@
   margin-bottom: 14px;
 }
 
-.videoInfoSearched {
-  width: 55%;
-  margin-left: 14px;
-  font-size: 13px;
-}
-
-.searchedThumbnails {
-  width: 320px;
-}
-
-.imageBox {
-  text-align: center;
-  width: 320px;
-}
-
-.channelProfile {
-  border-radius: 50%;
-  width: 50%;
-}
-
-.searchedTitle {
-  color: white;
-  width: 70%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-  margin: 0px;
-}
-
 .description {
   margin-top: 14px;
   margin-bottom: 14px;

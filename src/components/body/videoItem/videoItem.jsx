@@ -3,8 +3,8 @@ import SubscribedButton from "../subscribeButton/subscribeButton";
 import VideoItemInBoardView from "./videoItemInBoardView";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
-import NewVideoTag from "./newVIdeoTag/newVideoTag";
-import elapsedTime from "../../../utils/getElapsedTime";
+import VideoInfo from "./videoInfo/videoInfo";
+import Thumbnails from "./thumbnails/thumbnails";
 
 const Video = (props) => {
   const {
@@ -26,37 +26,15 @@ const Video = (props) => {
 
   return isListView ? (
     <li className={styles.searchedVideo} onClick={onVideoClick}>
-      {!isChannel ? (
-        <img
-          className={styles.searchedThumbnails}
-          src={thumbnails.medium.url}
-          alt="thumbnails"
-        ></img>
-      ) : (
-        <div className={styles.imageBox}>
-          <img
-            className={styles.channelProfile}
-            src={thumbnails.medium.url}
-            alt="channelProfile"
-          ></img>
-        </div>
-      )}
-
-      <div className={styles.videoInfo + " " + styles.videoInfoSearched}>
-        <h3 className={styles.searchedTitle}>{title}</h3>
-        {!isChannel ? (
-          <p className={styles.channelTitle}>{channelTitle}</p>
-        ) : (
-          ""
-        )}
-        {!isChannel ? (
-          <p className={styles.elapsedTime}>{getElapsedTime(publishedAt)}</p>
-        ) : (
-          ""
-        )}
-        <p className={styles.description}>{description}</p>
-        <NewVideoTag elapsedTime={getElapsedTime(publishedAt)} />
-      </div>
+      <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
+      <VideoInfo
+        title={title}
+        channelTitle={channelTitle}
+        description={description}
+        isVideo={!isChannel}
+        elapsedTime={getElapsedTime(publishedAt)}
+        viewType="search"
+      />
       {isChannel ? <SubscribedButton /> : ""}
     </li>
   ) : (
