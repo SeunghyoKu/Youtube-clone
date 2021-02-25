@@ -15,9 +15,8 @@ const Video = (props) => {
     description,
   } = props.video.snippet;
   const { kind } = props.video.id;
-  const isChannel = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "channel";
+  const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
-
   const isListView = !!searched || !!videoOpened;
 
   const onVideoClick = () => {
