@@ -9,13 +9,11 @@ const VideoInfo = (props) => {
 
   if (viewType === "board") {
     return (
-      <>
-        <div className={styles.videoInfo}>
-          <h3 className={styles.title}>{title}</h3>
-          <p className={styles.channelTitle}>{channelTitle}</p>
-          <p className={styles.elapsedTime}>{elapsedTime}</p>
-        </div>
-      </>
+      <div className={styles.videoInfo}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.channelTitle}>{channelTitle}</p>
+        <p className={styles.elapsedTime}>{elapsedTime}</p>
+      </div>
     );
   } else if (viewType === "search") {
     return (
@@ -25,6 +23,14 @@ const VideoInfo = (props) => {
         {isVideo ? <p className={styles.elapsedTime}>{elapsedTime}</p> : ""}
         <p className={styles.description}>{description}</p>
         <NewVideoTag elapsedTime={elapsedTime} />
+      </div>
+    );
+  } else if (viewType === "detail") {
+    return (
+      <div className={styles.videoInfo}>
+        <h3 className={styles.title}>{title}</h3>
+        <p className={styles.channelTitle}>{channelTitle}</p>
+        <p className={styles.elapsedTime}>{elapsedTime}</p>
       </div>
     );
   }

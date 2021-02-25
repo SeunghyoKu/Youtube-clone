@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./thumbnails.module.css";
 
-const Thumbnails = ({ isChannel, thumbnails }) => {
+const Thumbnails = ({ isChannel, thumbnails, isDetailView }) => {
   if (isChannel) {
     return (
       <div className={styles.imageBox}>
@@ -15,7 +15,9 @@ const Thumbnails = ({ isChannel, thumbnails }) => {
   } else {
     return (
       <img
-        className={styles.searchedThumbnails}
+        className={
+          !isDetailView ? styles.searchedThumbnails : styles.detailedThumbnails
+        }
         src={thumbnails}
         alt="thumbnails"
       ></img>

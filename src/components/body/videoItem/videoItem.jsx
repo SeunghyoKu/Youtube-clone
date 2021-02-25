@@ -1,10 +1,10 @@
 import React from "react";
-import SubscribedButton from "../subscribeButton/subscribeButton";
 import VideoItemInBoardView from "./videoItemInBoardView";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
 import VideoInfo from "./videoInfo/videoInfo";
 import Thumbnails from "./thumbnails/thumbnails";
+import SubscribedButton from "../subscribeButton/subscribeButton";
 
 const Video = (props) => {
   const {
@@ -17,36 +17,54 @@ const Video = (props) => {
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
-  const isListView = !!searched || !!videoOpened;
 
   const onVideoClick = () => {
-    props.setVideoOpened(props.video);
+    if (!isChannel) {
+      props.setVideoOpened(props.video);
+    }
   };
 
-  return isListView ? (
-    <li className={styles.searchedVideo} onClick={onVideoClick}>
-      <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
-      <VideoInfo
+  if (!!videoOpened) {
+    return (
+      <li className={styles.searchedVideo} onClick={onVideoClick}>
+        <Thumbnails isDetailView={true} thumbnails={thumbnails.medium.url} />
+        <VideoInfo
+          title={title}
+          channelTitle={channelTitle}
+          isVideo={!isChannel}
+          elapsedTime={getElapsedTime(publishedAt)}
+          viewType="detail"
+        />
+      </li>
+    );
+  } else if (!!searched) {
+    return (
+      <li className={styles.searchedVideo} onClick={onVideoClick}>
+        <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
+        <VideoInfo
+          title={title}
+          channelTitle={channelTitle}
+          description={description}
+          isVideo={!isChannel}
+          elapsedTime={getElapsedTime(publishedAt)}
+          viewType="search"
+        />
+        {isChannel ? <SubscribedButton /> : ""}
+      </li>
+    );
+  } else {
+    // in BoarView (in main page)
+    return (
+      <VideoItemInBoardView
+        menuOpened={menuOpened}
+        onVideoClick={onVideoClick}
+        thumbnails={thumbnails.medium.url}
         title={title}
         channelTitle={channelTitle}
-        description={description}
-        isVideo={!isChannel}
         elapsedTime={getElapsedTime(publishedAt)}
-        viewType="search"
       />
-      {isChannel ? <SubscribedButton /> : ""}
-    </li>
-  ) : (
-    // in BoarView (in main page)
-    <VideoItemInBoardView
-      menuOpened={menuOpened}
-      onVideoClick={onVideoClick}
-      thumbnails={thumbnails.medium.url}
-      title={title}
-      channelTitle={channelTitle}
-      elapsedTime={getElapsedTime(publishedAt)}
-    />
-  );
+    );
+  }
 };
 
 export default Video;
