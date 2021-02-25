@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import SubscribedButton from "../subscribeButton/subscribeButton";
 import VideoItemInBoardView from "./videoItemInBoardView";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
+import NewVideoTag from "./newVIdeoTag/newVideoTag";
+import elapsedTime from "../../../utils/getElapsedTime";
 
 const Video = (props) => {
   const {
@@ -15,7 +17,6 @@ const Video = (props) => {
   const { kind } = props.video.id;
   const isChannel = kind && /#([a-zA-Z]*)/.exec(kind)[1] === "channel";
   const { menuOpened, searched, videoOpened } = props;
-  const isNewVideo = publishedAt && /시간/.exec(getElapsedTime(publishedAt));
 
   const isListView = !!searched || !!videoOpened;
 
@@ -54,15 +55,12 @@ const Video = (props) => {
           ""
         )}
         <p className={styles.description}>{description}</p>
-        {isNewVideo ? (
-          <span className={styles.newVideoTag}>새 동영상</span>
-        ) : (
-          ""
-        )}
+        <NewVideoTag elapsedTime={getElapsedTime(publishedAt)} />
       </div>
       {isChannel ? <SubscribedButton /> : ""}
     </li>
   ) : (
+    // in BoarView (in main page)
     <VideoItemInBoardView
       menuOpened={menuOpened}
       onVideoClick={onVideoClick}
