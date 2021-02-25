@@ -22,3 +22,18 @@
   margin: 0px;
   padding: 1px;
 }
+
+.videoInfoSearched {
+  width: 55%;
+  margin-left: 14px;
+  font-size: 13px;
+}
+
+.searchedTitle {
+  color: white;
+  width: 70%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0px;
+}

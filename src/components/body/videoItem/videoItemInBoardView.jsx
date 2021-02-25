@@ -27,6 +27,7 @@ const VideoItemInBoardView = (props) => {
         title={title}
         channelTitle={channelTitle}
         elapsedTime={elapsedTime}
+        viewType="board"
       />
     </li>
   );
