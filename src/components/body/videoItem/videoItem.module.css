@@ -14,23 +14,6 @@
   width: calc(100% / 5 - 24px);
 }
 
-.videoInfo {
-  padding: 0px 24px 0px 0px;
-  font-size: 14px;
-}
-
-.title {
-  color: white;
-  margin: 12px 0px 6px 0px;
-  font-weight: bold;
-  /* for ellipsis */
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
 .channelTitle,
 .elapsedTime,
 .description {
