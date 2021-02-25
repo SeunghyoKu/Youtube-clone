@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SubscribedButton from "../subscribeButton/subscribeButton";
 import styles from "./videoItem.module.css";
 import getElapsedTime from "../../../utils/getElapsedTime";
 
@@ -63,25 +64,7 @@ const Video = (props) => {
           ""
         )}
       </div>
-      {isChannel ? (
-        subscribed ? (
-          <button
-            className={styles.subscribe + " " + styles.notSubscribed}
-            onClick={onClick}
-          >
-            구독
-          </button>
-        ) : (
-          <button
-            className={styles.subscribe + " " + styles.subscribed}
-            onClick={onClick}
-          >
-            구독중
-          </button>
-        )
-      ) : (
-        ""
-      )}
+      {isChannel ? <SubscribedButton /> : ""}
     </li>
   ) : (
     <li
