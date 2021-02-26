@@ -47,7 +47,7 @@ function App({ youtubeAPI }) {
   //   console.log(filteredList);
   //   //    setVideos(filteredList);
   // }
-  console.log(menuOpened && !!videoOpened);
+
   return (
     <>
       <div
