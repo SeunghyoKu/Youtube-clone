@@ -41,6 +41,6 @@
 .videoItemInDetailView {
   display: flex;
   flex-direction: row;
-  margin: 0px 24px 14px 0px;
+  margin: 0px 100px 14px 0px;
   cursor: pointer;
 }
