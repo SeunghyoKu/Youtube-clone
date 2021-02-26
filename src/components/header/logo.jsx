@@ -18,7 +18,7 @@ const Logo = ({ onMenuClick }) => {
           ></path>
         </g>
       </svg>
-      <a href="http://localhost:3000/">
+      <a href="/">
         <img
           className={styles.logo}
           src="./images/logo_dark.png"
