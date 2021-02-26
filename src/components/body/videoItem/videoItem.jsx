@@ -18,18 +18,17 @@ const Video = (props) => {
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
-  const { setVideoOpened, setMenuOpened } = props;
+  const { onVideoClick } = props;
 
-  const onVideoClick = () => {
-    console.log(setMenuOpened);
+  const onClick = () => {
     if (!isChannel) {
-      setVideoOpened(props.video);
+      onVideoClick(props.video);
     }
   };
 
   if (!!videoOpened) {
     return (
-      <li className={styles.videoItemInDetailView} onClick={onVideoClick}>
+      <li className={styles.videoItemInDetailView} onClick={onClick}>
         <Thumbnails isDetailView={true} thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
@@ -42,7 +41,7 @@ const Video = (props) => {
     );
   } else if (!!searched) {
     return (
-      <li className={styles.searchedVideo} onClick={onVideoClick}>
+      <li className={styles.searchedVideo} onClick={onClick}>
         <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
@@ -60,7 +59,7 @@ const Video = (props) => {
     return (
       <VideoItemInBoardView
         menuOpened={menuOpened}
-        onVideoClick={onVideoClick}
+        onClick={onClick}
         thumbnails={thumbnails.medium.url}
         title={title}
         channelTitle={channelTitle}

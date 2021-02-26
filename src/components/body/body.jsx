@@ -6,11 +6,10 @@ import styles from "./body.module.css";
 
 const Body = ({
   menuOpened,
-  setMenuOpened,
   videoOpened,
   videoList,
   searched,
-  setVideoOpened,
+  onVideoClick,
 }) => {
   return (
     <body className={styles.body}>
@@ -32,10 +31,9 @@ const Body = ({
         <Videos
           videoList={videoList}
           menuOpened={menuOpened}
-          setMenuOpened={setMenuOpened}
           searched={searched}
           videoOpened={videoOpened}
-          setVideoOpened={setVideoOpened}
+          onVideoClick={onVideoClick}
         />
       </section>
     </body>

@@ -30,7 +30,11 @@ function App({ youtubeAPI }) {
     setMenuOpened(reversedState);
   };
 
-  console.log(setMenuOpened);
+  const onVideoClick = (video) => {
+    setMenuOpened(false);
+    setVideoOpened(video);
+  };
+
   // To do : set channel list
   // const filterChannel = (video) => {
   //   const kind = video.id.kind || video.kind;
@@ -58,10 +62,9 @@ function App({ youtubeAPI }) {
         videoList={videos}
         setVideos={setVideos}
         menuOpened={menuOpened}
-        setMenuOpened={setMenuOpened}
         searched={searched}
         videoOpened={videoOpened}
-        setVideoOpened={setVideoOpened}
+        onVideoClick={onVideoClick}
       />
     </>
   );

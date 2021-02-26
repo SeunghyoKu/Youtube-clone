@@ -3,14 +3,7 @@ import Video from "../videoItem/videoItem";
 import styles from "./videoList.module.css";
 
 const Videos = (props) => {
-  const {
-    videoList,
-    menuOpened,
-    setMenuOpened,
-    searched,
-    videoOpened,
-    setVideoOpened,
-  } = props;
+  const { videoList, menuOpened, searched, videoOpened, onVideoClick } = props;
 
   if (!videoOpened) {
     return (
@@ -28,7 +21,7 @@ const Videos = (props) => {
               menuOpened={menuOpened}
               searched={searched}
               videoOpened={videoOpened}
-              setVideoOpened={setVideoOpened}
+              onVideoClick={onVideoClick}
             />
           ))}
         </ul>
@@ -42,10 +35,9 @@ const Videos = (props) => {
             <Video
               video={video}
               menuOpened={menuOpened}
-              setMenuOpened={setMenuOpened}
               searched={searched}
               videoOpened={videoOpened}
-              setVideoOpened={setVideoOpened}
+              onVideoClick={onVideoClick}
             />
           ))}
         </ul>

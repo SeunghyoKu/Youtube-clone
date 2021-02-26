@@ -5,7 +5,7 @@ import VideoInfo from "./videoInfo/videoInfo";
 const VideoItemInBoardView = (props) => {
   const {
     menuOpened,
-    onVideoClick,
+    onClick,
     thumbnails,
     title,
     channelTitle,
@@ -16,7 +16,7 @@ const VideoItemInBoardView = (props) => {
       className={
         menuOpened ? styles.video : styles.video + " " + styles.videoClosed
       }
-      onClick={onVideoClick}
+      onClick={onClick}
     >
       <img
         className={styles.thumbnails}
