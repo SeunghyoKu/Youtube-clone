@@ -16,7 +16,7 @@ function App({ youtubeAPI }) {
 
   useEffect(() => {
     getVideos();
-  }, []);
+  });
 
   const onSearh = async (searchText) => {
     setVideos([]);
