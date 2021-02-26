@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import SubscribeButton from "../subscribeButton/subscribeButton";
 import styles from "./videoDetail.module.css";
 import changeDate from "../../../utils/changeDate";
@@ -6,6 +6,13 @@ import changeDate from "../../../utils/changeDate";
 const VideoDetail = ({ video, menuOpened }) => {
   const videoId = video.id.videoId ? video.id.videoId : video.id;
   const { title, channelTitle, publishedAt, description } = video.snippet;
+
+  const [learnMore, setLearnMore] = useState(false);
+
+  const onClick = () => {
+    const currentState = learnMore;
+    setLearnMore(!currentState);
+  };
 
   return (
     <div className={styles.videoDetail}>
@@ -26,10 +33,25 @@ const VideoDetail = ({ video, menuOpened }) => {
         <div className={styles.videoInfoBoxInDetailView}>
           <div className={styles.videoInfoBoxLeftSide}>
             <p className={styles.channelTitle}>{channelTitle}</p>
-            <p className={styles.description}>{description}</p>
+            <p
+              className={
+                learnMore ? styles.description : styles.descriptionInLearnMore
+              }
+            >
+              {description}
+            </p>
           </div>
           <SubscribeButton />
         </div>
+        {learnMore ? (
+          <button onClick={onClick} className={styles.learnMoreButton}>
+            간략히
+          </button>
+        ) : (
+          <button onClick={onClick} className={styles.learnMoreButton}>
+            자세히
+          </button>
+        )}
       </div>
     </div>
   );

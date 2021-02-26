@@ -49,3 +49,17 @@
 .description {
   margin-right: 120px;
 }
+
+.descriptionInLearnMore {
+  height: 54px;
+  overflow: hidden;
+  margin-right: 120px;
+}
+
+.learnMoreButton {
+  background-color: transparent;
+  color: #aaaaaa;
+  border: none;
+  padding: 0px;
+  font-size: 14px;
+}
