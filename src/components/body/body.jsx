@@ -4,31 +4,38 @@ import Videos from "./videoList/videoList";
 import VideoDetail from "./videoDetail/videoDetail";
 import styles from "./body.module.css";
 
-const Body = (props) => {
+const Body = ({
+  menuOpened,
+  setMenuOpened,
+  videoOpened,
+  videoList,
+  searched,
+  setVideoOpened,
+}) => {
   return (
     <body className={styles.body}>
-      {!props.videoOpened ? <Menu menuOpened={props.menuOpened} /> : ""}
+      {(menuOpened && videoOpened) || !videoOpened ? (
+        <Menu menuOpened={menuOpened} videoOpened={videoOpened} />
+      ) : (
+        ""
+      )}
       <section
         className={
-          !!props.videoOpened
-            ? styles.sectionVideoOpened
-            : styles.sectionVideoClosed
+          !!videoOpened ? styles.sectionVideoOpened : styles.sectionVideoClosed
         }
       >
-        {!!props.videoOpened ? (
-          <VideoDetail
-            video={props.videoOpened}
-            menuOpened={props.menuOpened}
-          />
+        {!!videoOpened ? (
+          <VideoDetail video={videoOpened} menuOpened={menuOpened} />
         ) : (
           ""
         )}
         <Videos
-          videoList={props.videoList}
-          menuOpened={props.menuOpened}
-          searched={props.searched}
-          videoOpened={props.videoOpened}
-          setVideoOpened={props.setVideoOpened}
+          videoList={videoList}
+          menuOpened={menuOpened}
+          setMenuOpened={setMenuOpened}
+          searched={searched}
+          videoOpened={videoOpened}
+          setVideoOpened={setVideoOpened}
         />
       </section>
     </body>

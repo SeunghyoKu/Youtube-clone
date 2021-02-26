@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/header/header";
 import Body from "./components/body/body";
+import styles from "./app.module.css";
 
 function App({ youtubeAPI }) {
   const [videos, setVideos] = useState([]);
@@ -29,8 +30,25 @@ function App({ youtubeAPI }) {
     setMenuOpened(reversedState);
   };
 
+  console.log(setMenuOpened);
+  // To do : set channel list
+  // const filterChannel = (video) => {
+  //   const kind = video.id.kind || video.kind;
+  //   const isVideo = kind === "youtube#video";
+  //   return isVideo;
+  // };
+
+  // if (!!videoOpened) {
+  //   const filteredList = videos.filter(filterChannel);
+  //   console.log(filteredList);
+  //   //    setVideos(filteredList);
+  // }
+  console.log(menuOpened && !!videoOpened);
   return (
     <>
+      <div
+        className={menuOpened && !!videoOpened ? styles.modalWrapper : ""}
+      ></div>
       <Header
         handleSearch={handleSearh}
         handleMenuClick={handleMenuClick}
@@ -38,7 +56,9 @@ function App({ youtubeAPI }) {
       />
       <Body
         videoList={videos}
+        setVideos={setVideos}
         menuOpened={menuOpened}
+        setMenuOpened={setMenuOpened}
         searched={searched}
         videoOpened={videoOpened}
         setVideoOpened={setVideoOpened}

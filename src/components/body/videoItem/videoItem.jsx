@@ -18,10 +18,12 @@ const Video = (props) => {
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
+  const { setVideoOpened, setMenuOpened } = props;
 
   const onVideoClick = () => {
+    console.log(setMenuOpened);
     if (!isChannel) {
-      props.setVideoOpened(props.video);
+      setVideoOpened(props.video);
     }
   };
 

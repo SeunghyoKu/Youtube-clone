@@ -6,6 +6,7 @@ const Videos = (props) => {
   const {
     videoList,
     menuOpened,
+    setMenuOpened,
     searched,
     videoOpened,
     setVideoOpened,
@@ -41,6 +42,7 @@ const Videos = (props) => {
             <Video
               video={video}
               menuOpened={menuOpened}
+              setMenuOpened={setMenuOpened}
               searched={searched}
               videoOpened={videoOpened}
               setVideoOpened={setVideoOpened}
