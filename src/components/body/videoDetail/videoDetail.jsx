@@ -22,10 +22,15 @@ const VideoDetail = ({ video, menuOpened }) => {
       <div className={styles.videoInfo}>
         <h3 className={styles.title}>{title}</h3>
         <p className={styles.elapsedTime}>{changeDate(publishedAt)}</p>
-        <p className={styles.channelTitle}>{channelTitle}</p>
-        <p className={styles.description}>{description}</p>
+        <div className={styles.bar}></div>
+        <div className={styles.videoInfoBoxInDetailView}>
+          <div className={styles.videoInfoBoxLeftSide}>
+            <p className={styles.channelTitle}>{channelTitle}</p>
+            <p className={styles.description}>{description}</p>
+          </div>
+          <SubscribeButton />
+        </div>
       </div>
-      <SubscribeButton />
     </div>
   );
 };

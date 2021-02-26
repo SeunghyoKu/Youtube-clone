@@ -10,3 +10,7 @@
 .videoListClosed {
   padding: 83px 0px 0px 72px;
 }
+
+.videoListInDetailView {
+  padding: 83px 24px 0px 24px;
+}

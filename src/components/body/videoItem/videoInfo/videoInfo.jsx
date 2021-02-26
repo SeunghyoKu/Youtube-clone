@@ -27,10 +27,13 @@ const VideoInfo = (props) => {
     );
   } else if (viewType === "detail") {
     return (
-      <div className={styles.videoInfo}>
-        <h3 className={styles.title}>{title}</h3>
+      <div className={styles.videoInfoInDetailView}>
+        <h3 className={styles.title + " " + styles.titleInDetailView}>
+          {title}
+        </h3>
         <p className={styles.channelTitle}>{channelTitle}</p>
         <p className={styles.elapsedTime}>{elapsedTime}</p>
+        <NewVideoTag elapsedTime={elapsedTime} />
       </div>
     );
   }

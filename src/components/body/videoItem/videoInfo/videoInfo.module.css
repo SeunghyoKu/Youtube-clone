@@ -3,6 +3,12 @@
   font-size: 14px;
 }
 
+.videoInfoInDetailView {
+  font-size: 13px;
+  padding-left: 10px;
+  margin: 0px;
+}
+
 .title {
   color: white;
   margin: 12px 0px 6px 0px;
@@ -13,6 +19,10 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+}
+
+.titleInDetailView {
+  margin: 0px;
 }
 
 .channelTitle,

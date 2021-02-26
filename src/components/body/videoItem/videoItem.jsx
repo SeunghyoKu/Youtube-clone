@@ -14,6 +14,7 @@ const Video = (props) => {
     publishedAt,
     description,
   } = props.video.snippet;
+
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
@@ -26,7 +27,7 @@ const Video = (props) => {
 
   if (!!videoOpened) {
     return (
-      <li className={styles.searchedVideo} onClick={onVideoClick}>
+      <li className={styles.videoItemInDetailView} onClick={onVideoClick}>
         <Thumbnails isDetailView={true} thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
