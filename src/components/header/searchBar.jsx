@@ -1,24 +1,24 @@
 import React, { useRef } from "react";
 import styles from "./header.module.css";
 
-const SearchBar = (props) => {
+const SearchBar = ({ onSearch, setSearched }) => {
   const inputRef = useRef();
 
-  const handleSubmit = () => {
+  const onSubmit = () => {
     const searchText = inputRef.current.value;
-    searchText && props.handleSearch(searchText);
-    props.setSearched(true);
+    searchText && onSearch(searchText);
+    setSearched(true);
   };
 
   const onClick = (e) => {
     e.preventDefault();
-    handleSubmit();
+    onSubmit();
   };
 
   const onKeyPress = (e) => {
     e.preventDefault();
     if (e.key === "Enter") {
-      handleSubmit();
+      onSubmit();
     }
   };
 

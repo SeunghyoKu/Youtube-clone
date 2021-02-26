@@ -5,15 +5,12 @@ import HeaderRightIcons from "./headerRightIcons";
 
 import styles from "./header.module.css";
 
-const Header = (props) => {
+const Header = ({ onMenuClick, onSearch, setSearched }) => {
   return (
     <>
       <header className={styles.headerBar}>
-        <Logo handleMenuClick={props.handleMenuClick} />
-        <SearchBar
-          handleSearch={props.handleSearch}
-          setSearched={props.setSearched}
-        />
+        <Logo onMenuClick={onMenuClick} />
+        <SearchBar onSearch={onSearch} setSearched={setSearched} />
         <HeaderRightIcons />
       </header>
     </>

@@ -18,14 +18,14 @@ function App({ youtubeAPI }) {
     getVideos();
   }, []);
 
-  const handleSearh = async (searchText) => {
+  const onSearh = async (searchText) => {
     setVideos([]);
     setVideoOpened(null);
     const videos = await youtubeAPI.getSearchWithText(searchText);
     setVideos(videos);
   };
 
-  const handleMenuClick = () => {
+  const onMenuClick = () => {
     const reversedState = !menuOpened;
     setMenuOpened(reversedState);
   };
@@ -54,8 +54,8 @@ function App({ youtubeAPI }) {
         className={menuOpened && !!videoOpened ? styles.modalWrapper : ""}
       ></div>
       <Header
-        handleSearch={handleSearh}
-        handleMenuClick={handleMenuClick}
+        onSearch={onSearh}
+        onMenuClick={onMenuClick}
         setSearched={setSearched}
       />
       <Body

@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./header.module.css";
 
-const Logo = (props) => {
+const Logo = ({ onMenuClick }) => {
   return (
     <div className={styles.logoBar}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
         className={styles.icons + " " + styles.menuIcon}
-        onClick={props.handleMenuClick}
+        onClick={onMenuClick}
       >
         <g className={styles.icons + " " + styles.menuIcon} fill="#FFFFFF">
           <path
