@@ -27,7 +27,7 @@ const Videos = (props) => {
         </ul>
       </main>
     );
-  } else {
+  } else if (!!videoList.length) {
     return (
       <main className={styles.main}>
         <ul className={styles.videoList + " " + styles.videoListInDetailView}>
@@ -42,6 +42,13 @@ const Videos = (props) => {
           ))}
         </ul>
       </main>
+    );
+  } else {
+    return (
+      <div>
+        <p className={styles.error}>API 호출이 하루 최대 양을 초과했습니다.</p>
+        <p className={styles.error}>죄송하지만 다음에 이용해주세요. :-(</p>
+      </div>
     );
   }
 };
