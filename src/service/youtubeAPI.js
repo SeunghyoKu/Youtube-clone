@@ -17,7 +17,7 @@ class YoutubeAPI {
         return items;
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
         return [];
       });
   }
@@ -31,7 +31,7 @@ class YoutubeAPI {
         return items;
       })
       .catch((err) => {
-        console.error(err);
+        console.log(err);
         return [];
       });
   }
