@@ -17,6 +17,7 @@ const Videos = (props) => {
         >
           {videoList.map((video) => (
             <Video
+              key={video.id}
               video={video}
               menuOpened={menuOpened}
               searched={searched}
@@ -33,6 +34,7 @@ const Videos = (props) => {
         <ul className={styles.videoList + " " + styles.videoListInDetailView}>
           {videoList.map((video) => (
             <Video
+              key={video.id.videoId}
               video={video}
               menuOpened={menuOpened}
               searched={searched}
