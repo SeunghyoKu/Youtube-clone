@@ -18,14 +18,7 @@ class YoutubeAPI {
       })
       .catch((err) => {
         console.error(err);
-        const videoListInError = [
-          {
-            snippet: {
-              channelTitle: "API call ended",
-            },
-          },
-        ];
-        return videoListInError;
+        return [];
       });
   }
   async getSearchWithText(searchText) {
@@ -39,14 +32,7 @@ class YoutubeAPI {
       })
       .catch((err) => {
         console.error(err);
-        const videoListInError = [
-          {
-            snippet: {
-              channelTitle: "API call ended",
-            },
-          },
-        ];
-        return videoListInError;
+        return [];
       });
   }
 }
