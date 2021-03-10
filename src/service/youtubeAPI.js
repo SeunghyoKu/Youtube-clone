@@ -4,7 +4,7 @@ require("dotenv").config();
 class YoutubeAPI {
   constructor() {
     this.key = process.env.REACT_APP_API_KEY;
-    this.maxResults = 40;
+    this.maxResults = 20;
   }
   async getFamousVideos() {
     return await axios

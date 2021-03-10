@@ -10,8 +10,8 @@ function App({ youtubeAPI }) {
   const [videoOpened, setVideoOpened] = useState(null);
 
   const getVideos = async () => {
-    const videos = await youtubeAPI.getFamousVideos();
-    setVideos(videos);
+    const famousVideos = await youtubeAPI.getFamousVideos();
+    setVideos(famousVideos);
   };
 
   useEffect(() => {
@@ -21,8 +21,8 @@ function App({ youtubeAPI }) {
   const onSearh = async (searchText) => {
     setVideos([]);
     setVideoOpened(null);
-    const videos = await youtubeAPI.getSearchWithText(searchText);
-    setVideos(videos);
+    const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
+    setVideos(searchedVideos);
   };
 
   const onMenuClick = () => {
