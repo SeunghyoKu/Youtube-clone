@@ -15,8 +15,8 @@
   padding: 83px 24px 0px 24px;
 }
 
-.error {
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+@media (max-width: 800px) {
+  .videoList {
+    padding-left: 0px;
+  }
 }

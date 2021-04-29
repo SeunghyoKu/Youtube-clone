@@ -29,6 +29,10 @@ function App({ youtubeAPI }) {
     setMenuOpened(reversedState);
   };
 
+  const menuInSmallSizedWindow = (smallWindowSize) => {
+    smallWindowSize && setMenuOpened(false);
+  };
+
   const onVideoClick = (video) => {
     setMenuOpened(false);
     setVideoOpened(video);
@@ -61,6 +65,7 @@ function App({ youtubeAPI }) {
         videoList={videos}
         setVideos={setVideos}
         menuOpened={menuOpened}
+        menuInSmallSizedWindow={menuInSmallSizedWindow}
         searched={searched}
         videoOpened={videoOpened}
         onVideoClick={onVideoClick}

@@ -6,6 +6,7 @@ import styles from "./body.module.css";
 
 const Body = ({
   menuOpened,
+  menuInSmallSizedWindow,
   videoOpened,
   videoList,
   searched,
@@ -14,7 +15,10 @@ const Body = ({
   return (
     <body className={styles.body}>
       {(menuOpened && videoOpened) || !videoOpened ? (
-        <Menu menuOpened={menuOpened} videoOpened={videoOpened} />
+        <Menu
+          menuOpened={menuOpened}
+          menuInSmallSizedWindow={menuInSmallSizedWindow}
+        />
       ) : (
         ""
       )}

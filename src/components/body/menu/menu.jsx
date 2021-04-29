@@ -1,8 +1,10 @@
 import React from "react";
 import styles from "./menu.module.css";
 
-const Menu = (props) => {
-  const opened = props.menuOpened;
+const Menu = ({ menuOpened, menuInSmallSizedWindow }) => {
+  const opened = menuOpened;
+  const iswindowSmall = window.innerWidth < 1200;
+  menuInSmallSizedWindow(iswindowSmall);
 
   return (
     <div
