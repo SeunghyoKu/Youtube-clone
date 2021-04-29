@@ -18,7 +18,9 @@ const VideoInfo = (props) => {
   } else if (viewType === "search") {
     return (
       <div className={styles.videoInfo + " " + styles.videoInfoSearched}>
-        <h3 className={styles.title}>{title}</h3>
+        <h3 className={styles.title + " " + styles.titleInSearchedView}>
+          {title}
+        </h3>
         {isVideo ? <p className={styles.channelTitle}>{channelTitle}</p> : ""}
         {isVideo ? <p className={styles.elapsedTime}>{elapsedTime}</p> : ""}
         <p className={styles.description}>{description}</p>

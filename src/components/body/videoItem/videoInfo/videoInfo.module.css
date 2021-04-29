@@ -21,6 +21,10 @@
   -webkit-box-orient: vertical;
 }
 
+.titleInSearchedView {
+  margin-top: 0px;
+}
+
 .titleInDetailView {
   margin: 0px;
 }
@@ -46,4 +50,21 @@
   white-space: nowrap;
   overflow: hidden;
   margin: 0px;
+}
+
+@media (max-width: 1200px) {
+  .description {
+    /* for ellipsis */
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+  }
+}
+
+@media (max-width: 800px) {
+  .description {
+    display: none;
+  }
 }

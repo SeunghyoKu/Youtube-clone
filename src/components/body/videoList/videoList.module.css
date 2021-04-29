@@ -19,4 +19,11 @@
   .videoList {
     padding-left: 0px;
   }
+  .videoListClosed {
+    padding-left: 0px;
+  }
+  .videoListInDetailView {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
