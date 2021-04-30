@@ -53,6 +53,7 @@ const VideoDetail = ({ video, menuOpened }) => {
           </button>
         )}
       </div>
+      <div className={styles.bar}></div>
     </div>
   );
 };

@@ -16,9 +16,3 @@
   width: 168px;
   height: 94px;
 }
-
-@media (max-width: 1300px) {
-  .searchedThumbnails {
-    width: 70%;
-  }
-}

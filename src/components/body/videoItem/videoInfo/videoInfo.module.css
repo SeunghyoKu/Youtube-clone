@@ -4,7 +4,8 @@
 }
 
 .videoInfoInDetailView {
-  font-size: 13px;
+  width: 66%;
+  font-size: 12px;
   padding-left: 10px;
   margin: 0px;
 }
@@ -51,6 +52,13 @@
   overflow: hidden;
   margin: 0px;
 }
+/* 
+@media (max-width: 1300px) {
+  .videoInfoInDetailView {
+    width: 500px;
+    background-color: red;
+  }
+} */
 
 @media (max-width: 1200px) {
   .description {
