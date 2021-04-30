@@ -45,14 +45,15 @@ const HeaderRightIcons = (props) => {
           ></path>
         </g>
       </svg>
-
-      <img
-        alt="profile"
-        className={styles.profile}
-        width="32"
-        height="32"
-        src="https://yt3.ggpht.com/yti/ANoDKi4lRxJEeG4u-effK1KPNFamV9dEIiPAUNcX1Bm4yg=s88-c-k-c0x00ffffff-no-rj-mo"
-      ></img>
+      <a href="https://github.com/SeunghyoKu/Youtube-clone">
+        <img
+          alt="profile"
+          className={styles.profile}
+          width="32"
+          height="32"
+          src="https://yt3.ggpht.com/yti/ANoDKi4lRxJEeG4u-effK1KPNFamV9dEIiPAUNcX1Bm4yg=s88-c-k-c0x00ffffff-no-rj-mo"
+        ></img>
+      </a>
     </div>
   );
 };
