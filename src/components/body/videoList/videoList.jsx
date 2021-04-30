@@ -17,24 +17,7 @@ const Videos = (props) => {
         >
           {videoList.map((video) => (
             <Video
-              key={video.id}
-              video={video}
-              menuOpened={menuOpened}
-              searched={searched}
-              videoOpened={videoOpened}
-              onVideoClick={onVideoClick}
-            />
-          ))}
-        </ul>
-      </main>
-    );
-  } else if (!!videoList.length) {
-    return (
-      <main className={styles.main}>
-        <ul className={styles.videoList + " " + styles.videoListInDetailView}>
-          {videoList.map((video) => (
-            <Video
-              key={video.id.videoId}
+              key={video.id.videoId || video.id}
               video={video}
               menuOpened={menuOpened}
               searched={searched}
@@ -47,10 +30,20 @@ const Videos = (props) => {
     );
   } else {
     return (
-      <div>
-        <p className={styles.error}>API 호출이 하루 최대 양을 초과했습니다.</p>
-        <p className={styles.error}>죄송하지만 다음에 이용해주세요. :-(</p>
-      </div>
+      <main className={styles.main}>
+        <ul className={styles.videoList + " " + styles.videoListInDetailView}>
+          {videoList.map((video) => (
+            <Video
+              key={video.id.videoId || video.id}
+              video={video}
+              menuOpened={menuOpened}
+              searched={searched}
+              videoOpened={videoOpened}
+              onVideoClick={onVideoClick}
+            />
+          ))}
+        </ul>
+      </main>
     );
   }
 };

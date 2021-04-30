@@ -36,20 +36,17 @@ function App({ youtubeAPI }) {
   const onVideoClick = (video) => {
     setMenuOpened(false);
     setVideoOpened(video);
+    const filteredList = videos
+      .filter(filterChannel)
+      .filter((curr) => video !== curr);
+    setVideos(filteredList);
   };
 
-  // To do : set channel list
-  // const filterChannel = (video) => {
-  //   const kind = video.id.kind || video.kind;
-  //   const isVideo = kind === "youtube#video";
-  //   return isVideo;
-  // };
-
-  // if (!!videoOpened) {
-  //   const filteredList = videos.filter(filterChannel);
-  //   console.log(filteredList);
-  //   //    setVideos(filteredList);
-  // }
+  const filterChannel = (video) => {
+    const kind = video.id.kind || video.kind;
+    const isVideo = kind === "youtube#video";
+    return isVideo;
+  };
 
   return (
     <>
