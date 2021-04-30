@@ -22,8 +22,8 @@ const VideoDetail = ({ video, menuOpened }) => {
           className="ytplayer"
           type="text/html"
           src={`https://www.youtube.com/embed/${videoId}`}
-          frameborder="0"
-          allowfullscreen
+          frameBorder="0"
+          allowFullScreen
         ></iframe>
       </div>
       <div className={styles.videoInfo}>
