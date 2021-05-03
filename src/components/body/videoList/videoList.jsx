@@ -4,7 +4,8 @@ import styles from "./videoList.module.css";
 
 const Videos = (props) => {
   const { videoList, menuOpened, searched, videoOpened, onVideoClick } = props;
-
+  // videoList.map((video) => console.log(video.id));
+  // console.log(videoList);
   if (!videoOpened) {
     return (
       <main className={styles.main}>

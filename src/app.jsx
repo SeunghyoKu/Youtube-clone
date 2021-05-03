@@ -21,7 +21,10 @@ function App({ youtubeAPI }) {
     setVideos([]);
     setVideoOpened(null);
     const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
-    setVideos(searchedVideos);
+    const filteredVideos = searchedVideos.filter(
+      (video) => video.id.kind !== "youtube#playlist"
+    );
+    setVideos(filteredVideos);
   };
 
   const onMenuClick = () => {
