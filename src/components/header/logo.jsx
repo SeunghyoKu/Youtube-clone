@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./header.module.css";
 
 const Logo = ({ onMenuClick }) => {
+  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
   return (
     <div className={styles.logoBar}>
       <svg
@@ -21,7 +23,9 @@ const Logo = ({ onMenuClick }) => {
       <a href="/">
         <img
           className={styles.logo}
-          src="./images/logo_dark.png"
+          src={
+            isDarkMode ? "./images/logo_dark.png" : "./images/logo_light.png"
+          }
           alt="logo"
         ></img>
       </a>
