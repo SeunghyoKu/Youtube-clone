@@ -28,12 +28,18 @@ const Menu = ({ menuOpened, menuInSmallSizedWindow }) => {
           <g className={styles.menuIcon}>
             <path
               d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8"
-              className={styles.menuIcon}
+              className={styles.menuIcon + " " + styles.menuHomeIcon}
               fill="#FFFFFF"
             ></path>
           </g>
         </svg>
-        <span className={opened ? "" : styles.menuCharClosed}>홈</span>
+        <span
+          className={
+            opened ? "" : styles.menuCharClosed + " " + styles.menuCharHome
+          }
+        >
+          홈
+        </span>
       </div>
       <div
         className={opened ? styles.menu : styles.menu + " " + styles.menuClosed}

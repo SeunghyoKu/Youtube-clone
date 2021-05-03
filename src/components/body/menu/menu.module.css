@@ -77,10 +77,12 @@
   .menuHome {
     background-color: rgba(0, 0, 0, 0.1);
   }
-  .menuHome .menuIcon {
+  .menuHomeIcon {
     fill: red;
   }
-
+  .menuCharHome {
+    color: red;
+  }
   .menu:hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
