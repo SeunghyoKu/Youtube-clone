@@ -6,8 +6,10 @@ const SearchBar = ({ onSearch, setSearched }) => {
 
   const onSubmit = () => {
     const searchText = inputRef.current.value;
-    searchText && onSearch(searchText);
-    setSearched(true);
+    if (searchText) {
+      onSearch(searchText);
+      setSearched(true);
+    }
   };
 
   const onClick = (e) => {
