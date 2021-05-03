@@ -8,6 +8,7 @@ function App({ youtubeAPI }) {
   const [menuOpened, setMenuOpened] = useState(true);
   const [searched, setSearched] = useState(false);
   const [videoOpened, setVideoOpened] = useState(null);
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     const getVideos = async () => {
@@ -51,6 +52,11 @@ function App({ youtubeAPI }) {
     return isVideo;
   };
 
+  const onThemeClick = () => {
+    theme === "dark" ? setTheme("light") : setTheme("dark");
+    console.log(theme);
+  };
+
   return (
     <>
       <div
@@ -69,6 +75,8 @@ function App({ youtubeAPI }) {
         searched={searched}
         videoOpened={videoOpened}
         onVideoClick={onVideoClick}
+        theme={theme}
+        onThemeClick={onThemeClick}
       />
     </>
   );
