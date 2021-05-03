@@ -35,15 +35,6 @@
 .bar {
   width: 100%;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
-.videoInfo {
-  color: white;
-}
-
-.elapsedTime {
-  color: #aaaaaa;
 }
 
 .description {
@@ -58,7 +49,7 @@
 
 .learnMoreButton {
   background-color: transparent;
-  color: #aaaaaa;
+
   border: none;
   padding: 0px;
   font-size: 14px;
@@ -82,5 +73,28 @@
     width: 90%;
     vertical-align: center;
     margin-left: 5%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .learnMoreButton,
+  .elapsedTime {
+    color: #aaaaaa;
+  }
+  .videoInfo {
+    color: white;
+  }
+  .bar {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .learnMoreButton,
+  .elapsedTime {
+    color: #606060;
+  }
+  .bar {
+    background-color: #cccccc;
   }
 }
