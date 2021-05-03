@@ -13,11 +13,10 @@ class YoutubeAPI {
       )
       .then((result) => {
         const { items } = result.data;
-        console.log(items);
         return items;
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         return [];
       });
   }
@@ -31,7 +30,7 @@ class YoutubeAPI {
         return items;
       })
       .catch((err) => {
-        console.log(err);
+        console.error(err);
         return [];
       });
   }
