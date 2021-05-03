@@ -11,6 +11,8 @@ const Body = ({
   videoList,
   searched,
   onVideoClick,
+  theme,
+  onThemeClick,
 }) => {
   return (
     <body className={styles.body}>
@@ -18,6 +20,8 @@ const Body = ({
         <Menu
           menuOpened={menuOpened}
           menuInSmallSizedWindow={menuInSmallSizedWindow}
+          theme={theme}
+          onThemeClick={onThemeClick}
         />
       ) : (
         ""
