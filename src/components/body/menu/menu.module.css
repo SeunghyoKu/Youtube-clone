@@ -7,8 +7,6 @@
   width: 240px;
   height: 100%;
   padding: 12px 0px 12px 0px;
-  background-color: rgba(33, 33, 33, 0.98);
-  color: white;
   z-index: 2;
 }
 
@@ -45,18 +43,45 @@
   margin: 0px 0px 6px 0px;
 }
 
-.menuHome {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.menu:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 @media (max-width: 800px) {
   .menuBar,
   .menuBarClosed {
     display: none;
     width: 0px;
+  }
+}
+.channelTitle,
+.elapsedTime,
+.description {
+  color: #aaaaaa;
+}
+
+@media (prefers-color-scheme: dark) {
+  .menuBar {
+    background-color: rgba(33, 33, 33, 0.98);
+    color: white;
+  }
+  .menuHome {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  .menu:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .menuBar {
+    background-color: white;
+    color: black;
+  }
+  .menuHome {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  .menuHome .menuIcon {
+    fill: red;
+  }
+
+  .menu:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }

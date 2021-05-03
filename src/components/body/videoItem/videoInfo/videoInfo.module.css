@@ -33,7 +33,6 @@
 .channelTitle,
 .elapsedTime,
 .description {
-  color: #aaaaaa;
   margin: 0px;
   padding: 1px;
 }
@@ -74,5 +73,27 @@
 @media (max-width: 800px) {
   .description {
     display: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .title {
+    color: white;
+  }
+  .channelTitle,
+  .elapsedTime,
+  .description {
+    color: #aaaaaa;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .title {
+    color: black;
+  }
+  .channelTitle,
+  .elapsedTime,
+  .description {
+    color: #606060;
   }
 }

@@ -3,7 +3,7 @@ import styles from "./header.module.css";
 
 const HeaderRightIcons = (props) => {
   return (
-    <div>
+    <div className={styles.headerRightIcons}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

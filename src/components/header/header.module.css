@@ -12,7 +12,7 @@
   right: 0px;
   flex-direction: row;
   justify-content: space-between;
-  background-color: rgba(33, 33, 33, 0.98);
+
   padding: 8px 16px 8px 16px;
   z-index: 99;
 }
@@ -34,13 +34,9 @@
   transition: background-color 10ms ease-in-out;
 }
 
-.menuIcon:active {
-  background-color: rgba(255, 255, 255, 0.2);
-}
-
 .language {
   height: 24px;
-  color: #aaaaaa;
+
   margin-left: 2px;
   font-size: 10px;
 }
@@ -62,15 +58,12 @@
   vertical-align: top;
   width: 80%;
   height: 26px;
-  color: white;
-  background-color: #121212;
-  border: 1px solid #303030;
+  border-radius: 2px;
 }
 
 .searchButton {
   height: 30px;
   width: 65px;
-  background-color: #323232;
   border: none;
   padding: 1px 6px 1px 6px;
 }
@@ -116,5 +109,54 @@
 @media (max-width: 625px) {
   .searchBar {
     display: none;
+  }
+}
+
+@media (max-width: 400px) {
+  .headerRightIcons {
+    display: none;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .headerBar {
+    background-color: white;
+  }
+  .menuIcon:active {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  .searchInput {
+    border: 1px solid #cccccc;
+    color: black;
+  }
+  .searchButton {
+    background-color: #f8f8f8;
+    border: 1px solid #cccccc;
+  }
+  .language {
+    color: #606060;
+  }
+  .icons {
+    fill: #606060;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .headerBar {
+    background-color: rgba(33, 33, 33, 0.98);
+  }
+  .menuIcon:active {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  .searchInput {
+    border: 1px solid #303030;
+    background-color: #121212;
+    color: white;
+  }
+  .searchButton {
+    background-color: #323232;
+  }
+  .language {
+    color: #aaaaaa;
   }
 }
