@@ -2,7 +2,7 @@ import React from "react";
 import Menu from "./menu/menu";
 import Videos from "./videoList/videoList";
 import VideoDetail from "./videoDetail/videoDetail";
-import styles from "./body.module.css";
+import styled from "styled-components";
 
 const Body = ({
   menuOpened,
@@ -15,7 +15,7 @@ const Body = ({
   onThemeClick,
 }) => {
   return (
-    <body className={styles.body}>
+    <BodyDiv theme={theme}>
       {(menuOpened && videoOpened) || !videoOpened ? (
         <Menu
           menuOpened={menuOpened}
@@ -26,11 +26,7 @@ const Body = ({
       ) : (
         ""
       )}
-      <section
-        className={
-          !!videoOpened ? styles.sectionVideoOpened : styles.sectionVideoClosed
-        }
-      >
+      <section>
         {!!videoOpened ? (
           <VideoDetail video={videoOpened} menuOpened={menuOpened} />
         ) : (
@@ -42,10 +38,19 @@ const Body = ({
           searched={searched}
           videoOpened={videoOpened}
           onVideoClick={onVideoClick}
+          theme={theme}
         />
       </section>
-    </body>
+    </BodyDiv>
   );
 };
 
 export default Body;
+
+const BodyDiv = styled.div`
+  height: 100%;
+  position: static;
+  top: 59px;
+  background-color: ${(props) =>
+    props.theme === "dark" ? "#181818" : "#f9f9f9"};
+`;

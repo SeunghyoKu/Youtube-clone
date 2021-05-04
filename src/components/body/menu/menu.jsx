@@ -9,63 +9,69 @@ const Menu = ({ menuOpened, menuInSmallSizedWindow, theme, onThemeClick }) => {
   const iswindowSmall = window.innerWidth < 1200;
   menuInSmallSizedWindow(iswindowSmall);
 
-  const MenuBar = styled.div`
-    float: left;
-    position: fixed;
-    top: 59px;
-    left: 0px;
-    bottom: 0px;
-    width: ${opened ? "240px" : "72px"};
-    height: 100%;
-    padding: 12px 0px 12px 0px;
-    background-color: ${theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
-    color: ${theme === "dark" ? "white" : "black"};
-    z-index: 2;
-  `;
-
-  const Menu = styled.div`
-    height: ${opened ? " 40px" : "74px"};
-    padding: 0px 24px 0px 24px;
-    display: flex;
-    flex-direction: ${opened ? "row" : "column"};
-    align-items: center;
-    cursor: pointer;
-    ${opened ? "" : "justify-content: center"};
-
-    &:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-    }
-  `;
-
-  const MenuSpan = styled.span`
-    font-size: ${opened ? "14px" : "10px"};
-    text-align: center;
-  `;
-
   return (
-    <MenuBar>
-      <Menu>
+    <MenuBar opened={opened} theme={theme}>
+      <MenuDiv opened={opened}>
         <Icon opened={opened} d={icons.home} theme={theme} home={true} />
-        <MenuSpan>홈</MenuSpan>
-      </Menu>
-      <Menu>
+        <MenuSpan opened={opened}>홈</MenuSpan>
+      </MenuDiv>
+      <MenuDiv opened={opened}>
         <Icon opened={opened} d={icons.hot} theme={theme} />
-        <MenuSpan>인기</MenuSpan>
-      </Menu>
-      <Menu>
+        <MenuSpan opened={opened}>인기</MenuSpan>
+      </MenuDiv>
+      <MenuDiv opened={opened}>
         <Icon opened={opened} d={icons.subscribe} theme={theme} />
-        <MenuSpan>구독</MenuSpan>
-      </Menu>
-      <Menu>
+        <MenuSpan opened={opened}>구독</MenuSpan>
+      </MenuDiv>
+      <MenuDiv opened={opened}>
         <Icon opened={opened} d={icons.original} theme={theme} />
-        <MenuSpan>Originals</MenuSpan>
-      </Menu>
-      <Menu onClick={onThemeClick}>
+        <MenuSpan opened={opened}>Originals</MenuSpan>
+      </MenuDiv>
+      <MenuDiv opened={opened} onClick={onThemeClick}>
         <Moon opened={opened} d={icons.moon} />
-        <MenuSpan>{theme + " mode"}</MenuSpan>
-      </Menu>
+        <MenuSpan opened={opened}>{theme + " mode"}</MenuSpan>
+      </MenuDiv>
     </MenuBar>
   );
 };
 
 export default Menu;
+
+const MenuBar = styled.div`
+  float: left;
+  position: fixed;
+  top: 59px;
+  left: 0px;
+  bottom: 0px;
+  width: ${(props) => (props.opened ? "240px" : "72px")};
+  height: 100%;
+  padding: 12px 0px 12px 0px;
+  background-color: ${(props) =>
+    props.theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
+  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  z-index: 2;
+
+  @media (max-width: 800px) {
+    display: none;
+    width: 0px;
+  }
+`;
+
+const MenuDiv = styled.div`
+  height: ${(props) => (props.opened ? " 40px" : "74px")};
+  padding: 0px 24px 0px 24px;
+  display: flex;
+  flex-direction: ${(props) => (props.opened ? "row" : "column")};
+  align-items: center;
+  cursor: pointer;
+  ${(props) => (props.opened ? "" : "justify-content: center")};
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+`;
+
+const MenuSpan = styled.span`
+  font-size: ${(props) => (props.opened ? "14px" : "10px")};
+  text-align: center;
+`;
