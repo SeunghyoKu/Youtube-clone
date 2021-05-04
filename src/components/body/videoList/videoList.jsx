@@ -1,20 +1,21 @@
 import React from "react";
 import Video from "../videoItem/videoItem";
-import styles from "./videoList.module.css";
+import styled from "styled-components";
 
 const Videos = (props) => {
-  const { videoList, menuOpened, searched, videoOpened, onVideoClick } = props;
+  const {
+    videoList,
+    menuOpened,
+    searched,
+    videoOpened,
+    onVideoClick,
+    theme,
+  } = props;
 
   if (!videoOpened) {
     return (
-      <main className={styles.main}>
-        <ul
-          className={
-            menuOpened
-              ? styles.videoList
-              : styles.videoList + " " + styles.videoListClosed
-          }
-        >
+      <main>
+        <VideoList menuOpened={menuOpened}>
           {videoList.map((video) => (
             <Video
               key={video.id.videoId || video.id}
@@ -23,15 +24,16 @@ const Videos = (props) => {
               searched={searched}
               videoOpened={videoOpened}
               onVideoClick={onVideoClick}
+              theme={theme}
             />
           ))}
-        </ul>
+        </VideoList>
       </main>
     );
   } else {
     return (
-      <main className={styles.main}>
-        <ul className={styles.videoList + " " + styles.videoListInDetailView}>
+      <main>
+        <VideoListInDetailView>
           {videoList.map((video) => (
             <Video
               key={video.id.videoId || video.id}
@@ -42,10 +44,45 @@ const Videos = (props) => {
               onVideoClick={onVideoClick}
             />
           ))}
-        </ul>
+        </VideoListInDetailView>
       </main>
     );
   }
 };
+
+const VideoList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0px;
+  padding: ${(props) =>
+    props.menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
+  @media (max-width: 800px) {
+    padding-left: 0px;
+    color: red;
+  }
+`;
+
+const VideoListInDetailView = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  margin: 0px;
+  flex-direction: column;
+  width: 350px;
+  padding: 83px 24px 0px 24px;
+
+  @media (max-width: 1000px) {
+    width: 90%;
+    padding-top: 24px;
+    margin-left: 24px;
+  }
+  @media (max-width: 800px) {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+`;
 
 export default Videos;
