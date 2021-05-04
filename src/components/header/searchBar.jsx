@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import icons from "../../service/icons";
-import styles from "./header.module.css";
 import styled from "styled-components";
 
 const SearchBar = ({ onSearch, setSearched, theme }) => {
@@ -37,7 +36,7 @@ const SearchBar = ({ onSearch, setSearched, theme }) => {
         />
         <SearchButton theme={theme} onClick={onClick} onKeyPress={onKeyPress}>
           <svg width="24" height="24" viewBox="0 0 24 24">
-            <g className={styles.icons} fillOpacity="0.5" fill="#606060">
+            <g fillOpacity="0.5" fill="#606060">
               <path d={icons.search}></path>
             </g>
           </svg>
