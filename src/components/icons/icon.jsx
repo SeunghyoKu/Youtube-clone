@@ -21,29 +21,29 @@ const Icon = ({ opened, d, theme, home }) => {
     }
   };
 
-  const Icon = styled.svg`
-    margin-right: 24px;
-    fill: ${getFillColor()};
-  `;
-
-  const IconClosed = styled.svg`
-    margin: 0px 0px 6px 0px;
-    fill: ${getFillColor()};
-  `;
-
   return opened ? (
-    <Icon viewBox="0 0 24 24" width="24">
+    <IconSVG viewBox="0 0 24 24" width="24" color={getFillColor()}>
       <g>
         <path d={d} fill="current"></path>
       </g>
-    </Icon>
+    </IconSVG>
   ) : (
-    <IconClosed viewBox="0 0 24 24" width="24">
+    <IconClosedSVG viewBox="0 0 24 24" width="24">
       <g>
         <path d={d} fill="current"></path>
       </g>
-    </IconClosed>
+    </IconClosedSVG>
   );
 };
 
 export default Icon;
+
+const IconSVG = styled.svg`
+  margin-right: 24px;
+  fill: ${(props) => props.color};
+`;
+
+const IconClosedSVG = styled.svg`
+  margin: 0px 0px 6px 0px;
+  fill: ${(props) => props.color};
+`;

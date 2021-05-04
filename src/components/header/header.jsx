@@ -4,8 +4,6 @@ import Logo from "./logo";
 import HeaderRightIcons from "./headerRightIcons";
 import styled from "styled-components";
 
-import styles from "./header.module.css";
-
 const Header = ({ onMenuClick, onSearch, setSearched, theme }) => {
   return (
     <>
