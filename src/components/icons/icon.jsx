@@ -28,7 +28,7 @@ const Icon = ({ opened, d, theme, home }) => {
       </g>
     </IconSVG>
   ) : (
-    <IconClosedSVG viewBox="0 0 24 24" width="24">
+    <IconClosedSVG viewBox="0 0 24 24" width="24" color={getFillColor()}>
       <g>
         <path d={d} fill="current"></path>
       </g>

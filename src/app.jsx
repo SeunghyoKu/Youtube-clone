@@ -54,7 +54,6 @@ function App({ youtubeAPI }) {
 
   const onThemeClick = () => {
     theme === "dark" ? setTheme("light") : setTheme("dark");
-    console.log(theme);
   };
 
   return (
