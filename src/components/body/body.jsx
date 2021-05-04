@@ -28,7 +28,11 @@ const Body = ({
       )}
       <section>
         {!!videoOpened ? (
-          <VideoDetail video={videoOpened} menuOpened={menuOpened} />
+          <VideoDetail
+            video={videoOpened}
+            menuOpened={menuOpened}
+            theme={theme}
+          />
         ) : (
           ""
         )}
