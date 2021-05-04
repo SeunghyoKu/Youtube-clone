@@ -17,49 +17,49 @@
   z-index: 99;
 }
 
-.logo {
+/* .logo {
   height: 24px;
-}
-
+} */
+/* 
 .logoBar {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
+} */
 
-.menuIcon {
+/* .menuIcon {
   padding: 8px;
   margin-right: 16px;
   border-radius: 50%;
   transition: background-color 10ms ease-in-out;
-}
+} */
 
-.language {
+/* .language {
   height: 24px;
 
   margin-left: 2px;
   font-size: 10px;
-}
+} */
 
-.searchBar {
+/* .searchBar {
   display: flex;
   width: 40%;
   flex-direction: row;
   align-items: center;
   margin-left: 40px;
-}
+} */
 
-.searchForm {
+/* .searchForm {
   width: 100%;
   height: 30px;
-}
+} */
 
-.searchInput {
+/* .searchInput {
   vertical-align: top;
   width: 80%;
   height: 26px;
   border-radius: 2px;
-}
+} */
 
 .searchButton {
   height: 30px;
@@ -72,23 +72,23 @@
   padding: 8px;
 }
 
-.rightIcons {
+/* .rightIcons {
   padding: 8px;
-}
-
+} */
+/* 
 .profile {
   border-radius: 50%;
   margin: 4px 8px 4px 8px;
   padding: 0px 14px 0px 14px;
-}
+} */
 
 @media (max-width: 1020px) {
-  .searchBar {
+  /* .searchBar {
     width: 35%;
-  }
-  .searchInput {
+  } */
+  /* .searchInput {
     width: 70%;
-  }
+  } */
 }
 
 @media (max-width: 830px) {
@@ -98,65 +98,65 @@
 }
 
 @media (max-width: 670px) {
-  .searchBar {
+  /* .searchBar {
     width: 30%;
-  }
+  } */
   .searchInput {
     width: 50%;
   }
 }
 
-@media (max-width: 625px) {
+/* @media (max-width: 625px) {
   .searchBar {
     display: none;
   }
-}
+} */
 
-@media (max-width: 400px) {
+/* @media (max-width: 400px) {
   .headerRightIcons {
     display: none;
   }
-}
+} */
 
 @media (prefers-color-scheme: light) {
   .headerBar {
     background-color: white;
   }
-  .menuIcon:active {
+  /* .menuIcon:active {
     background-color: rgba(0, 0, 0, 0.2);
-  }
-  .searchInput {
+  } */
+  /* .searchInput {
     border: 1px solid #cccccc;
     color: black;
-  }
-  .searchButton {
+  } */
+  /* .searchButton {
     background-color: #f8f8f8;
     border: 1px solid #cccccc;
-  }
-  .language {
+  } */
+  /* .language {
     color: #606060;
   }
   .icons {
     fill: #606060;
-  }
+  } */
 }
 
 @media (prefers-color-scheme: dark) {
   .headerBar {
     background-color: rgba(33, 33, 33, 0.98);
   }
-  .menuIcon:active {
+  /* .menuIcon:active {
     background-color: rgba(255, 255, 255, 0.2);
-  }
+  } */
   .searchInput {
     border: 1px solid #303030;
     background-color: #121212;
     color: white;
   }
-  .searchButton {
+  /* .searchButton {
     background-color: #323232;
-  }
-  .language {
+  } */
+  /* .language {
     color: #aaaaaa;
-  }
+  } */
 }

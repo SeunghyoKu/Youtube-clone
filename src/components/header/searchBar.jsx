@@ -1,7 +1,9 @@
 import React, { useRef } from "react";
+import icons from "../../service/icons";
 import styles from "./header.module.css";
+import styled from "styled-components";
 
-const SearchBar = ({ onSearch, setSearched }) => {
+const SearchBar = ({ onSearch, setSearched, theme }) => {
   const inputRef = useRef();
 
   const onSubmit = () => {
@@ -25,38 +27,76 @@ const SearchBar = ({ onSearch, setSearched }) => {
   };
 
   return (
-    <div className={styles.searchBar}>
-      <form className={styles.searchForm}>
-        <input
-          className={styles.searchInput}
+    <SearchBarDiv>
+      <SearchForm>
+        <SearchInput
           type="text"
           ref={inputRef}
           placeholder="검색"
+          theme={theme}
         />
-        <button
-          className={styles.searchButton}
-          onClick={onClick}
-          onKeyPress={onKeyPress}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            className={styles.icons}
-          >
-            <g className={styles.icons} fillOpacity="0.5" fill="#FFFFFF">
-              <path
-                d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"
-                className={styles.icons}
-                fill="#FFFFFF"
-              ></path>
+        <SearchButton theme={theme} onClick={onClick} onKeyPress={onKeyPress}>
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <g className={styles.icons} fillOpacity="0.5" fill="#606060">
+              <path d={icons.search}></path>
             </g>
           </svg>
-        </button>
-      </form>
-    </div>
+        </SearchButton>
+      </SearchForm>
+    </SearchBarDiv>
   );
 };
 
 export default SearchBar;
+
+const SearchBarDiv = styled.div`
+  display: flex;
+  width: 40%;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 40px;
+  @media (max-width: 1020px) {
+    width: 35%;
+  }
+  @media (max-width: 670px) {
+    width: 30%;
+  }
+  @media (max-width: 625px) {
+    display: none;
+  }
+`;
+
+const SearchForm = styled.form`
+  width: 100%;
+  height: 30px;
+`;
+
+const SearchInput = styled.input`
+  vertical-align: top;
+  width: 80%;
+  height: 26px;
+  border-radius: 2px;
+  border: ${(props) =>
+    props.theme === "dark" ? "1px solid #303030" : "1px solid #cccccc"};
+  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  background-color: ${(props) =>
+    props.theme === "dark" ? "#121212" : "white"};
+  @media (max-width: 1020px) {
+    width: 70%;
+  }
+  @media (max-width: 830px) {
+    width: 60%;
+  }
+  @media (max-width: 670px) {
+    width: 50%;
+  }
+`;
+
+const SearchButton = styled.button`
+  height: 30px;
+  width: 65px;
+  border: none;
+  padding: 1px 6px 1px 6px;
+  background-color: ${(props) =>
+    props.theme === "dark" ? "#323232" : "f8f8f8"};
+`;

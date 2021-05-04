@@ -1,38 +1,62 @@
 import React from "react";
-import styles from "./header.module.css";
+import styled from "styled-components";
+import icons from "../../service/icons";
 
-const Logo = ({ onMenuClick }) => {
-  const isDarkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
+const Logo = ({ onMenuClick, theme }) => {
   return (
-    <div className={styles.logoBar}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        className={styles.icons + " " + styles.menuIcon}
-        onClick={onMenuClick}
-      >
-        <g className={styles.icons + " " + styles.menuIcon} fill="#FFFFFF">
-          <path
-            d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
-            className={styles.icons + " " + styles.menuIcon}
-            fill="#FFFFFF"
-          ></path>
+    <LogoBar>
+      <MenuIcon viewBox="0 0 24 24" onClick={onMenuClick} theme={theme}>
+        <g>
+          <path d={icons.menu} fill="current"></path>
         </g>
-      </svg>
+      </MenuIcon>
+
       <a href="/">
-        <img
-          className={styles.logo}
+        <LogoImage
           src={
-            isDarkMode ? "./images/logo_dark.png" : "./images/logo_light.png"
+            theme === "dark"
+              ? "./images/logo_dark.png"
+              : "./images/logo_light.png"
           }
           alt="logo"
-        ></img>
+        />
       </a>
 
-      <span className={styles.language}>KR</span>
-    </div>
+      <Language theme={theme}>KR</Language>
+    </LogoBar>
   );
 };
 
 export default Logo;
+
+const LogoBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+const Language = styled.span`
+  height: 24px;
+  margin-left: 2px;
+  font-size: 10px;
+  color: ${(props) => (props.theme === "dark" ? "#aaaaaa" : "#606060")};
+`;
+
+const LogoImage = styled.img`
+  height: 24px;
+`;
+
+const MenuIcon = styled.svg`
+  fill: ${(props) => (props.theme === "dark" ? "white" : "#606060")};
+  width: 24px;
+  padding: 8px;
+  margin-right: 16px;
+  border-radius: 50%;
+  transition: background-color 10ms ease-in-out;
+  &:active {
+    background-color: ${(props) =>
+      props.theme === "dark"
+        ? "rgba(255, 255, 255, 0.2)"
+        : "rgba(0, 0, 0, 0.2)"};
+  }
+`;

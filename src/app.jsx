@@ -66,6 +66,7 @@ function App({ youtubeAPI }) {
         onSearch={onSearh}
         onMenuClick={onMenuClick}
         setSearched={setSearched}
+        theme={theme}
       />
       <Body
         videoList={videos}
