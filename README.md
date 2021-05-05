@@ -1,29 +1,29 @@
 # Youtube Clone Coding
 
-리액트를 이용한 유튜브 클론코딩 개인 프로젝트입니다. <br />
-리액트를 접하면서 필요한 부분을 배우고, 수정해나가고 있습니다.
-
 > 배포 링크: [승튜브](https://shtube.netlify.app/)
 
-화면에 아무런 동영상도 뜨지 않는다면, API 호출 제한이 걸린 것입니다. ㅠㅠ <br />
+### 사용 기술
 
+<img src="https://logos-download.com/wp-content/uploads/2016/09/React_logo_wordmark.png" width="300"></img>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<img src="https://user-images.githubusercontent.com/43411599/117172452-cbf80d00-ae06-11eb-82bb-1c7c9048a5db.png" width="200"></img>
+
+
+## 구현 화면
 ### 기본 메인 화면
 
 ![image](https://user-images.githubusercontent.com/43411599/109307483-0fbd1c00-7884-11eb-9d85-0598c89b3310.png)
 
 ### 검색 화면
 
-![image](https://user-images.githubusercontent.com/43411599/109307563-311e0800-7884-11eb-88a2-747ded3804df.png)
+<img src="https://user-images.githubusercontent.com/43411599/117168304-fd6ed980-ae02-11eb-8145-6681246a3d1c.gif" width="720" height="480">
 
-### 비디오 상세 화면
+### 다크 & 라이트 변경
+<img src="https://user-images.githubusercontent.com/43411599/117168273-f8118f00-ae02-11eb-92d0-679a8a02a994.gif" width="720" height="480">
 
-![image](https://user-images.githubusercontent.com/43411599/109610253-d9c3b480-7b6f-11eb-870c-7fb684427d22.png)
+### 반응형
+<img src="https://user-images.githubusercontent.com/43411599/117171630-001efe00-ae06-11eb-9f31-1625db025e94.gif" width="720" height="480">
 
 ---
-
-실제 유튜브와 완전 똑같지는 않더라도 유사하게 동작하는 웹 사이트를 리액트로 만드는 것에 초점을 두고 있습니다.<br />
-앞으로 기능은 계속해서 추가해나갈 예정입니다.
-마일스톤과 이슈를 이용해볼 예정입니다. :-)
 
 승튜브는 아래와 같은 기능을 제공합니다.
 <br />
