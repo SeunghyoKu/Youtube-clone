@@ -39,9 +39,6 @@ const RightIcon = styled.svg`
   padding: 8px;
   width: 24px;
   height: 24px;
-  @media (max-width: 410px) {
-    display: none;
-  }
 `;
 
 const Profile = styled.img`
@@ -50,4 +47,7 @@ const Profile = styled.img`
   border-radius: 50%;
   margin: 4px 8px 4px 8px;
   padding: 0px 14px 0px 14px;
+  @media (max-width: 410px) {
+    padding: 0;
+  }
 `;

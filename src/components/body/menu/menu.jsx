@@ -42,7 +42,6 @@ const MenuBar = styled.div`
   position: fixed;
   top: 59px;
   left: 0px;
-  bottom: 0px;
   width: ${(props) => (props.opened ? "240px" : "72px")};
   height: 100%;
   padding: 12px 0px 12px 0px;
@@ -54,6 +53,14 @@ const MenuBar = styled.div`
   @media (max-width: 800px) {
     display: none;
     width: 0px;
+  }
+  @media (max-width: 410px) {
+    display: flex;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    padding: 0px;
+    top: 90%;
   }
 `;
 
@@ -68,6 +75,10 @@ const MenuDiv = styled.div`
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  @media (max-width: 410px) {
+    height: "30px";
   }
 `;
 

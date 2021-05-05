@@ -110,6 +110,9 @@ const Description = styled.p`
   height: ${(props) => (props.learnMore ? "54px" : "")};
   margin-right: ${(props) => (props.learnMore ? "120px" : "")};
   overflow: ${(props) => (props.learnMore ? "hidden" : "")};
+  @media (max-width: 410px) {
+    margin-right: 0px;
+  }
 `;
 
 const VideoInfo = styled.div`
@@ -126,4 +129,7 @@ const VideoInfoInDetailView = styled.div`
 
 const VideoInfoBoxLeftSide = styled.div`
   width: 95%;
+  @media (max-width: 410px) {
+    width: 75%;
+  }
 `;
