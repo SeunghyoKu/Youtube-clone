@@ -1,44 +1,104 @@
 import React from "react";
-import styles from "./videoInfo.module.css";
-
+import styled from "styled-components";
 import NewVideoTag from "../newVIdeoTag/newVideoTag";
 
 const VideoInfo = (props) => {
-  const { title, channelTitle, elapsedTime, viewType } = props; // board
+  const { title, channelTitle, elapsedTime, viewType, theme } = props; // board
   const { isVideo, description } = props; // search
-
   if (viewType === "board") {
     return (
-      <div className={styles.videoInfo}>
-        <h3 className={styles.title}>{title}</h3>
-        <p className={styles.channelTitle}>{channelTitle}</p>
-        <p className={styles.elapsedTime}>{elapsedTime}</p>
-      </div>
+      <StyledVideoInfo>
+        <Title theme={theme}>{title}</Title>
+        <P theme={theme}>{channelTitle}</P>
+        <P theme={theme}>{elapsedTime}</P>
+      </StyledVideoInfo>
     );
   } else if (viewType === "search") {
     return (
-      <div className={styles.videoInfo + " " + styles.videoInfoSearched}>
-        <h3 className={styles.title + " " + styles.titleInSearchedView}>
-          {title}
-        </h3>
-        {isVideo ? <p className={styles.channelTitle}>{channelTitle}</p> : ""}
-        {isVideo ? <p className={styles.elapsedTime}>{elapsedTime}</p> : ""}
-        <p className={styles.description}>{description}</p>
+      <VideoInfoSearched>
+        <TitleSearched theme={theme}>{title}</TitleSearched>
+        {isVideo ? <P theme={theme}>{channelTitle}</P> : ""}
+        {isVideo ? <P theme={theme}>{elapsedTime}</P> : ""}
+        <Description>{description}</Description>
         <NewVideoTag elapsedTime={elapsedTime} />
-      </div>
+      </VideoInfoSearched>
     );
   } else if (viewType === "detail") {
     return (
-      <div className={styles.videoInfoInDetailView}>
-        <h3 className={styles.title + " " + styles.titleInDetailView}>
+      <VideoInfoDetailed>
+        <Title theme={theme} viewType={viewType}>
           {title}
-        </h3>
-        <p className={styles.channelTitle}>{channelTitle}</p>
-        <p className={styles.elapsedTime}>{elapsedTime}</p>
+        </Title>
+        <P theme={theme}>{channelTitle}</P>
+        <P theme={theme}>{elapsedTime}</P>
         <NewVideoTag elapsedTime={elapsedTime} />
-      </div>
+      </VideoInfoDetailed>
     );
   }
 };
 
 export default VideoInfo;
+
+const StyledVideoInfo = styled.div`
+  padding: 0px 24px 0px 0px;
+  font-size: 14px;
+`;
+
+const VideoInfoSearched = styled.div`
+  padding: 0px 24px 0px 0px;
+  font-size: 14px;
+  width: 55%;
+  margin-left: 14px;
+  font-size: 13px;
+`;
+
+const VideoInfoDetailed = styled.div`
+  width: 66%;
+  font-size: 12px;
+  padding-left: 10px;
+  margin: 0px;
+`;
+
+const Title = styled.h3`
+  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  margin: 12px 0px 6px 0px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  margin: ${(props) => (props.viewType === "detail" ? "0px" : "")};
+`;
+
+const TitleSearched = styled.h3`
+  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  width: 70%;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0px;
+`;
+
+const P = styled.p`
+  margin: 0px;
+  padding: 1px;
+  color: ${(props) => (props.theme === "dark" ? "#aaaaaa" : "#606060")};
+`;
+
+const Description = styled.p`
+  margin: 0px;
+  padding: 1px;
+  color: ${(props) => (props.theme === "dark" ? "#aaaaaa" : "#606060")};
+  @media (max-with: 1200px) {
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+  }
+  @media (max-with: 800px) {
+    display: none;
+  }
+`;

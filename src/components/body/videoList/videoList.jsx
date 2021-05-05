@@ -42,6 +42,7 @@ const Videos = (props) => {
               searched={searched}
               videoOpened={videoOpened}
               onVideoClick={onVideoClick}
+              theme={theme}
             />
           ))}
         </VideoListInDetailView>

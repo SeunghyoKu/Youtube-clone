@@ -1,6 +1,7 @@
 import React from "react";
 import VideoItemInBoardView from "./videoItemInBoardView";
-import styles from "./videoItem.module.css";
+import styled from "styled-components";
+
 import getElapsedTime from "../../../utils/getElapsedTime";
 import VideoInfo from "./videoInfo/videoInfo";
 import Thumbnails from "./thumbnails/thumbnails";
@@ -18,7 +19,7 @@ const Video = (props) => {
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
   const { menuOpened, searched, videoOpened } = props;
-  const { onVideoClick } = props;
+  const { onVideoClick, theme } = props;
 
   const onClick = () => {
     if (!isChannel) {
@@ -28,7 +29,7 @@ const Video = (props) => {
 
   if (!!videoOpened) {
     return (
-      <li className={styles.videoItemInDetailView} onClick={onClick}>
+      <VideoItem onClick={onClick}>
         <Thumbnails isDetailView={true} thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
@@ -36,12 +37,13 @@ const Video = (props) => {
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
           viewType="detail"
+          theme={theme}
         />
-      </li>
+      </VideoItem>
     );
   } else if (!!searched) {
     return (
-      <li className={styles.searchedVideo} onClick={onClick}>
+      <VideoItemSearched onClick={onClick}>
         <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
@@ -50,9 +52,10 @@ const Video = (props) => {
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
           viewType="search"
+          theme={theme}
         />
         {isChannel ? <SubscribedButton /> : ""}
-      </li>
+      </VideoItemSearched>
     );
   } else {
     // in BoarView (in main page)
@@ -64,9 +67,33 @@ const Video = (props) => {
         title={title}
         channelTitle={channelTitle}
         elapsedTime={getElapsedTime(publishedAt)}
+        theme={theme}
       />
     );
   }
 };
 
 export default Video;
+
+const VideoItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 14px;
+  cursor: pointer;
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const VideoItemSearched = styled.li`
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  height: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 14px;
+  &:hover {
+    cursor: pointer;
+  }
+`;
