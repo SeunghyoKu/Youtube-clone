@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import icons from "../../service/icons";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/theme";
 
-const HeaderRightIcons = ({ theme }) => {
+const HeaderRightIcons = () => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <div>
       <RightIcon viewBox="0 0 24 24" theme={theme}>
@@ -34,7 +37,7 @@ const HeaderRightIcons = ({ theme }) => {
 export default HeaderRightIcons;
 
 const RightIcon = styled.svg`
-  fill: ${(props) => (props.theme === "dark" ? "white" : "#606060")};
+  fill: ${({ theme }) => (theme === "dark" ? "white" : "#606060")};
   cursor: pointer;
   padding: 8px;
   width: 24px;

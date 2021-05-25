@@ -10,7 +10,6 @@ const VideoItemInBoardView = (props) => {
     title,
     channelTitle,
     elapsedTime,
-    theme,
   } = props;
   return (
     <VideoList onClick={onClick} menuOpened={menuOpened}>
@@ -20,7 +19,6 @@ const VideoItemInBoardView = (props) => {
         channelTitle={channelTitle}
         elapsedTime={elapsedTime}
         viewType="board"
-        theme={theme}
       />
     </VideoList>
   );
@@ -31,8 +29,8 @@ export default VideoItemInBoardView;
 const VideoList = styled.li`
   display: flex;
   flex-direction: column;
-  width: ${(props) =>
-    props.menuOpened ? "calc(100% / 4 - 24px)" : "calc(100% / 5 - 24px)"};
+  width: ${({ menuOpened }) =>
+    menuOpened ? "calc(100% / 4 - 24px)" : "calc(100% / 5 - 24px)"};
   margin: 0px 8px 40px 8px;
   &:hover {
     cursor: pointer;

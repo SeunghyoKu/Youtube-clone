@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Icon from "../../icons/icon";
 import Moon from "../../icons/moon";
 import icons from "../../../service/icons";
+import Context from "../../../contexts/theme";
 
-const Menu = ({ menuOpened, menuInSmallSizedWindow, theme, onThemeClick }) => {
+const Menu = ({ menuOpened, menuInSmallSizedWindow, onThemeClick }) => {
   const opened = menuOpened;
   const iswindowSmall = window.innerWidth < 1200;
   menuInSmallSizedWindow(iswindowSmall);
+
+  const { state } = useContext(Context);
+  const theme = state["theme"];
 
   return (
     <MenuBar opened={opened} theme={theme}>

@@ -18,8 +18,7 @@ const Video = (props) => {
 
   const { kind } = props.video.id;
   const isChannel = kind && /channel/.test(kind);
-  const { menuOpened, searched, videoOpened } = props;
-  const { onVideoClick, theme } = props;
+  const { menuOpened, searched, videoOpened, onVideoClick } = props;
 
   const onClick = () => {
     if (!isChannel) {
@@ -37,7 +36,6 @@ const Video = (props) => {
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
           viewType="detail"
-          theme={theme}
         />
       </VideoItem>
     );
@@ -52,7 +50,6 @@ const Video = (props) => {
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
           viewType="search"
-          theme={theme}
         />
         {isChannel ? <SubscribedButton /> : ""}
       </VideoItemSearched>
@@ -67,7 +64,6 @@ const Video = (props) => {
         title={title}
         channelTitle={channelTitle}
         elapsedTime={getElapsedTime(publishedAt)}
-        theme={theme}
       />
     );
   }

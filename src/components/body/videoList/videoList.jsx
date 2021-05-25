@@ -3,14 +3,7 @@ import Video from "../videoItem/videoItem";
 import styled from "styled-components";
 
 const Videos = (props) => {
-  const {
-    videoList,
-    menuOpened,
-    searched,
-    videoOpened,
-    onVideoClick,
-    theme,
-  } = props;
+  const { videoList, menuOpened, searched, videoOpened, onVideoClick } = props;
 
   if (!videoOpened) {
     return (
@@ -24,7 +17,6 @@ const Videos = (props) => {
               searched={searched}
               videoOpened={videoOpened}
               onVideoClick={onVideoClick}
-              theme={theme}
             />
           ))}
         </VideoList>
@@ -42,7 +34,6 @@ const Videos = (props) => {
               searched={searched}
               videoOpened={videoOpened}
               onVideoClick={onVideoClick}
-              theme={theme}
             />
           ))}
         </VideoListInDetailView>
@@ -57,8 +48,8 @@ const VideoList = styled.ul`
   justify-content: center;
   list-style: none;
   margin: 0px;
-  padding: ${(props) =>
-    props.menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
+  padding: ${({ menuOpened }) =>
+    menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
   @media (max-width: 800px) {
     padding-left: 0px;
     color: red;

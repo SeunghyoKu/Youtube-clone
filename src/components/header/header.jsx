@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import SearchBar from "./searchBar";
 import Logo from "./logo";
 import HeaderRightIcons from "./headerRightIcons";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/theme";
 
-const Header = ({ onMenuClick, onSearch, setSearched, theme }) => {
+const Header = ({ onMenuClick, onSearch, setSearched }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <>
       <HeaderBar theme={theme}>
-        <Logo onMenuClick={onMenuClick} theme={theme} />
-        <SearchBar
-          onSearch={onSearch}
-          setSearched={setSearched}
-          theme={theme}
-        />
-        <HeaderRightIcons theme={theme} />
+        <Logo onMenuClick={onMenuClick} />
+        <SearchBar onSearch={onSearch} setSearched={setSearched} />
+        <HeaderRightIcons />
       </HeaderBar>
     </>
   );
@@ -32,6 +31,6 @@ const HeaderBar = styled.div`
   justify-content: space-between;
   padding: 8px 16px 8px 16px;
   z-index: 99;
-  background-color: ${(props) =>
-    props.theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
+  background-color: ${({ theme }) =>
+    theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
 `;

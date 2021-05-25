@@ -32,5 +32,5 @@ const ChannelProfile = styled.img`
 `;
 
 const StyledThumbnails = styled.img`
-  width: ${(props) => (props.isDetailView ? "168px" : "320px")};
+  width: ${({ isDetailView }) => (isDetailView ? "168px" : "320px")};
 `;

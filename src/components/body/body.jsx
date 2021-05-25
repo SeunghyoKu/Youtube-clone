@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Menu from "./menu/menu";
 import Videos from "./videoList/videoList";
 import VideoDetail from "./videoDetail/videoDetail";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/theme";
 
 const Body = ({
   menuOpened,
@@ -11,16 +12,16 @@ const Body = ({
   videoList,
   searched,
   onVideoClick,
-  theme,
   onThemeClick,
 }) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <BodyDiv theme={theme}>
       {(menuOpened && videoOpened) || !videoOpened ? (
         <Menu
           menuOpened={menuOpened}
           menuInSmallSizedWindow={menuInSmallSizedWindow}
-          theme={theme}
           onThemeClick={onThemeClick}
         />
       ) : (
@@ -28,11 +29,7 @@ const Body = ({
       )}
       <section>
         {!!videoOpened ? (
-          <VideoDetail
-            video={videoOpened}
-            menuOpened={menuOpened}
-            theme={theme}
-          />
+          <VideoDetail video={videoOpened} menuOpened={menuOpened} />
         ) : (
           ""
         )}
@@ -42,7 +39,6 @@ const Body = ({
           searched={searched}
           videoOpened={videoOpened}
           onVideoClick={onVideoClick}
-          theme={theme}
         />
       </section>
     </BodyDiv>
@@ -55,6 +51,6 @@ const BodyDiv = styled.div`
   height: 100%;
   position: static;
   top: 59px;
-  background-color: ${(props) =>
-    props.theme === "dark" ? "#181818" : "#f9f9f9"};
+  background-color: ${({ theme }) =>
+    theme === "dark" ? "#181818" : "#f9f9f9"};
 `;

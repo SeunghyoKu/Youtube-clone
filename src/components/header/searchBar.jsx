@@ -1,9 +1,11 @@
-import React, { useRef } from "react";
+import React, { useRef, useContext } from "react";
 import icons from "../../service/icons";
 import styled from "styled-components";
+import ThemeContext from "../../contexts/theme";
 
-const SearchBar = ({ onSearch, setSearched, theme }) => {
+const SearchBar = ({ onSearch, setSearched }) => {
   const inputRef = useRef();
+  const { theme } = useContext(ThemeContext);
 
   const onSubmit = () => {
     const searchText = inputRef.current.value;
@@ -75,11 +77,10 @@ const SearchInput = styled.input`
   width: 80%;
   height: 26px;
   border-radius: 2px;
-  border: ${(props) =>
-    props.theme === "dark" ? "1px solid #303030" : "1px solid #cccccc"};
-  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
-  background-color: ${(props) =>
-    props.theme === "dark" ? "#121212" : "white"};
+  border: ${({ theme }) =>
+    theme === "dark" ? "1px solid #303030" : "1px solid #cccccc"};
+  color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
+  background-color: ${({ theme }) => (theme === "dark" ? "#121212" : "white")};
   @media (max-width: 1020px) {
     width: 70%;
   }
@@ -96,6 +97,5 @@ const SearchButton = styled.button`
   width: 65px;
   border: none;
   padding: 1px 6px 1px 6px;
-  background-color: ${(props) =>
-    props.theme === "dark" ? "#323232" : "f8f8f8"};
+  background-color: ${({ theme }) => (theme === "dark" ? "#323232" : "f8f8f8")};
 `;

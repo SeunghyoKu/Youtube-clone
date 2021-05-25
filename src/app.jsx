@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Header from "./components/header/header";
 import Body from "./components/body/body";
+
 import styles from "./app.module.css";
+import ThemeContext from "./contexts/theme";
 
 function App({ youtubeAPI }) {
   const [videos, setVideos] = useState([]);
@@ -57,7 +59,7 @@ function App({ youtubeAPI }) {
   };
 
   return (
-    <>
+    <ThemeContext.Provider value={{ theme }}>
       <div
         className={menuOpened && !!videoOpened ? styles.modalWrapper : ""}
       ></div>
@@ -65,7 +67,6 @@ function App({ youtubeAPI }) {
         onSearch={onSearh}
         onMenuClick={onMenuClick}
         setSearched={setSearched}
-        theme={theme}
       />
       <Body
         videoList={videos}
@@ -75,10 +76,9 @@ function App({ youtubeAPI }) {
         searched={searched}
         videoOpened={videoOpened}
         onVideoClick={onVideoClick}
-        theme={theme}
         onThemeClick={onThemeClick}
       />
-    </>
+    </ThemeContext.Provider>
   );
 }
 
