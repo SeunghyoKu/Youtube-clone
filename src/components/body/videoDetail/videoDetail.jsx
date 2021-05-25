@@ -1,13 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import SubscribeButton from "../subscribeButton/subscribeButton";
 import changeDate from "../../../utils/changeDate";
 import styled from "styled-components";
+import ThemeContext from "../../../contexts/theme";
+import ViewContext from "../../../contexts/view";
 
-const VideoDetail = ({ video, menuOpened, theme }) => {
+const VideoDetail = () => {
+  const { state } = useContext(ViewContext);
+  const { currVideo: video } = state;
   const videoId = video.id.videoId ? video.id.videoId : video.id;
   const { title, channelTitle, publishedAt, description } = video.snippet;
 
   const [learnMore, setLearnMore] = useState(true);
+  const { theme } = useContext(ThemeContext);
 
   const onClick = () => {
     const currentState = learnMore;

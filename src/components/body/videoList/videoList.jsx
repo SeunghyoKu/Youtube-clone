@@ -1,31 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Video from "../videoItem/videoItem";
 import styled from "styled-components";
+import ViewContext from "../../../contexts/view";
 
-const Videos = (props) => {
-  const {
-    videoList,
-    menuOpened,
-    searched,
-    videoOpened,
-    onVideoClick,
-    theme,
-  } = props;
+const Videos = ({ videoList }) => {
+  const { state } = useContext(ViewContext);
+  const { menuOpened, viewType } = state;
 
-  if (!videoOpened) {
+  if (viewType !== "detail") {
     return (
       <main>
         <VideoList menuOpened={menuOpened}>
           {videoList.map((video) => (
-            <Video
-              key={video.id.videoId || video.id}
-              video={video}
-              menuOpened={menuOpened}
-              searched={searched}
-              videoOpened={videoOpened}
-              onVideoClick={onVideoClick}
-              theme={theme}
-            />
+            <Video key={video.id.videoId || video.id} video={video} />
           ))}
         </VideoList>
       </main>
@@ -35,15 +22,7 @@ const Videos = (props) => {
       <main>
         <VideoListInDetailView>
           {videoList.map((video) => (
-            <Video
-              key={video.id.videoId || video.id}
-              video={video}
-              menuOpened={menuOpened}
-              searched={searched}
-              videoOpened={videoOpened}
-              onVideoClick={onVideoClick}
-              theme={theme}
-            />
+            <Video key={video.id.videoId || video.id} video={video} />
           ))}
         </VideoListInDetailView>
       </main>
@@ -57,8 +36,8 @@ const VideoList = styled.ul`
   justify-content: center;
   list-style: none;
   margin: 0px;
-  padding: ${(props) =>
-    props.menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
+  padding: ${({ menuOpened }) =>
+    menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
   @media (max-width: 800px) {
     padding-left: 0px;
     color: red;

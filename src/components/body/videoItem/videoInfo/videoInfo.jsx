@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import NewVideoTag from "../newVIdeoTag/newVideoTag";
+import ThemeContext from "../../../../contexts/theme";
+import ViewContext from "../../../../contexts/view";
 
 const VideoInfo = (props) => {
-  const { title, channelTitle, elapsedTime, viewType, theme } = props; // board
+  const { title, channelTitle, elapsedTime } = props; // board
   const { isVideo, description } = props; // search
+
+  const { theme } = useContext(ThemeContext);
+  const { state } = useContext(ViewContext);
+  const { viewType } = state;
+
   if (viewType === "board") {
     return (
       <StyledVideoInfo>
@@ -60,7 +67,7 @@ const VideoInfoDetailed = styled.div`
 `;
 
 const Title = styled.h3`
-  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
   margin: 12px 0px 6px 0px;
   font-weight: bold;
   overflow: hidden;
@@ -68,11 +75,11 @@ const Title = styled.h3`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  margin: ${(props) => (props.viewType === "detail" ? "0px" : "")};
+  margin: ${({ viewType }) => (viewType === "detail" ? "0px" : "")};
 `;
 
 const TitleSearched = styled.h3`
-  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
   width: 70%;
   font-weight: bold;
   text-overflow: ellipsis;
@@ -84,13 +91,13 @@ const TitleSearched = styled.h3`
 const P = styled.p`
   margin: 0px;
   padding: 1px;
-  color: ${(props) => (props.theme === "dark" ? "#aaaaaa" : "#606060")};
+  color: ${({ theme }) => (theme === "dark" ? "#aaaaaa" : "#606060")};
 `;
 
 const Description = styled.p`
   margin: 0px;
   padding: 1px;
-  color: ${(props) => (props.theme === "dark" ? "#aaaaaa" : "#606060")};
+  color: ${({ theme }) => (theme === "dark" ? "#aaaaaa" : "#606060")};
   @media (max-with: 1200px) {
     display: inline-block;
     text-overflow: ellipsis;

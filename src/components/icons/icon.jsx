@@ -40,10 +40,10 @@ export default Icon;
 
 const IconSVG = styled.svg`
   margin-right: 24px;
-  fill: ${(props) => props.color};
+  fill: ${({ color }) => color};
 `;
 
 const IconClosedSVG = styled.svg`
   margin: 0px 0px 6px 0px;
-  fill: ${(props) => props.color};
+  fill: ${({ color }) => color};
 `;
