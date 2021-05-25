@@ -3,8 +3,11 @@ import SubscribeButton from "../subscribeButton/subscribeButton";
 import changeDate from "../../../utils/changeDate";
 import styled from "styled-components";
 import ThemeContext from "../../../contexts/theme";
+import ViewContext from "../../../contexts/view";
 
-const VideoDetail = ({ video }) => {
+const VideoDetail = () => {
+  const { state } = useContext(ViewContext);
+  const { currVideo: video } = state;
   const videoId = video.id.videoId ? video.id.videoId : video.id;
   const { title, channelTitle, publishedAt, description } = video.snippet;
 

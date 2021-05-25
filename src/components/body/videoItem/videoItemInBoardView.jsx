@@ -1,16 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import VideoInfo from "./videoInfo/videoInfo";
+import ViewContext from "../../../contexts/view";
 
 const VideoItemInBoardView = (props) => {
-  const {
-    menuOpened,
-    onClick,
-    thumbnails,
-    title,
-    channelTitle,
-    elapsedTime,
-  } = props;
+  const { onClick, thumbnails, title, channelTitle, elapsedTime } = props;
+
+  const { state } = useContext(ViewContext);
+  const { menuOpened } = state;
+
   return (
     <VideoList onClick={onClick} menuOpened={menuOpened}>
       <img src={thumbnails} alt="thumbnails"></img>
@@ -18,7 +16,6 @@ const VideoItemInBoardView = (props) => {
         title={title}
         channelTitle={channelTitle}
         elapsedTime={elapsedTime}
-        viewType="board"
       />
     </VideoList>
   );

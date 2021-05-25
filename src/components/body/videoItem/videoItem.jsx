@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import VideoItemInBoardView from "./videoItemInBoardView";
 import styled from "styled-components";
 
@@ -6,40 +6,43 @@ import getElapsedTime from "../../../utils/getElapsedTime";
 import VideoInfo from "./videoInfo/videoInfo";
 import Thumbnails from "./thumbnails/thumbnails";
 import SubscribedButton from "../subscribeButton/subscribeButton";
+import ViewContext from "../../../contexts/view";
 
-const Video = (props) => {
+const Video = ({ video }) => {
   const {
     thumbnails,
     title,
     channelTitle,
     publishedAt,
     description,
-  } = props.video.snippet;
+  } = video.snippet;
 
-  const { kind } = props.video.id;
+  const { kind } = video.id;
   const isChannel = kind && /channel/.test(kind);
-  const { menuOpened, searched, videoOpened, onVideoClick } = props;
+
+  const { state, actions } = useContext(ViewContext);
+  const { viewType } = state;
+  const { onVideoClick } = actions;
 
   const onClick = () => {
     if (!isChannel) {
-      onVideoClick(props.video);
+      onVideoClick(video);
     }
   };
 
-  if (!!videoOpened) {
+  if (viewType === "detail") {
     return (
       <VideoItem onClick={onClick}>
-        <Thumbnails isDetailView={true} thumbnails={thumbnails.medium.url} />
+        <Thumbnails thumbnails={thumbnails.medium.url} />
         <VideoInfo
           title={title}
           channelTitle={channelTitle}
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
-          viewType="detail"
         />
       </VideoItem>
     );
-  } else if (!!searched) {
+  } else if (viewType === "search") {
     return (
       <VideoItemSearched onClick={onClick}>
         <Thumbnails isChannel={isChannel} thumbnails={thumbnails.medium.url} />
@@ -49,16 +52,13 @@ const Video = (props) => {
           description={description}
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
-          viewType="search"
         />
         {isChannel ? <SubscribedButton /> : ""}
       </VideoItemSearched>
     );
-  } else {
-    // in BoarView (in main page)
+  } else if (viewType === "board") {
     return (
       <VideoItemInBoardView
-        menuOpened={menuOpened}
         onClick={onClick}
         thumbnails={thumbnails.medium.url}
         title={title}

@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import NewVideoTag from "../newVIdeoTag/newVideoTag";
 import ThemeContext from "../../../../contexts/theme";
+import ViewContext from "../../../../contexts/view";
 
 const VideoInfo = (props) => {
-  const { title, channelTitle, elapsedTime, viewType } = props; // board
+  const { title, channelTitle, elapsedTime } = props; // board
   const { isVideo, description } = props; // search
 
   const { theme } = useContext(ThemeContext);
+  const { state } = useContext(ViewContext);
+  const { viewType } = state;
 
   if (viewType === "board") {
     return (

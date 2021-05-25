@@ -3,16 +3,13 @@ import icons from "../../service/icons";
 import styled from "styled-components";
 import ThemeContext from "../../contexts/theme";
 
-const SearchBar = ({ onSearch, setSearched }) => {
+const SearchBar = ({ onSearch }) => {
   const inputRef = useRef();
   const { theme } = useContext(ThemeContext);
 
   const onSubmit = () => {
     const searchText = inputRef.current.value;
-    if (searchText) {
-      onSearch(searchText);
-      setSearched(true);
-    }
+    onSearch(searchText);
   };
 
   const onClick = (e) => {

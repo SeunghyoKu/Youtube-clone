@@ -4,23 +4,17 @@ import Videos from "./videoList/videoList";
 import VideoDetail from "./videoDetail/videoDetail";
 import styled from "styled-components";
 import ThemeContext from "../../contexts/theme";
+import ViewContext from "../../contexts/view";
 
-const Body = ({
-  menuOpened,
-  menuInSmallSizedWindow,
-  videoOpened,
-  videoList,
-  searched,
-  onVideoClick,
-  onThemeClick,
-}) => {
+const Body = ({ menuInSmallSizedWindow, videoList, onThemeClick }) => {
   const { theme } = useContext(ThemeContext);
+  const { state } = useContext(ViewContext);
+  const { menuOpened, viewType } = state;
 
   return (
     <BodyDiv theme={theme}>
-      {(menuOpened && videoOpened) || !videoOpened ? (
+      {(menuOpened && viewType === "detail") || viewType !== "detail" ? (
         <Menu
-          menuOpened={menuOpened}
           menuInSmallSizedWindow={menuInSmallSizedWindow}
           onThemeClick={onThemeClick}
         />
@@ -28,18 +22,8 @@ const Body = ({
         ""
       )}
       <section>
-        {!!videoOpened ? (
-          <VideoDetail video={videoOpened} menuOpened={menuOpened} />
-        ) : (
-          ""
-        )}
-        <Videos
-          videoList={videoList}
-          menuOpened={menuOpened}
-          searched={searched}
-          videoOpened={videoOpened}
-          onVideoClick={onVideoClick}
-        />
+        {viewType === "detail" ? <VideoDetail /> : ""}
+        <Videos videoList={videoList} />
       </section>
     </BodyDiv>
   );

@@ -4,13 +4,14 @@ import Body from "./components/body/body";
 
 import styles from "./app.module.css";
 import ThemeContext from "./contexts/theme";
+import ViewContext from "./contexts/view";
 
 function App({ youtubeAPI }) {
   const [videos, setVideos] = useState([]);
   const [menuOpened, setMenuOpened] = useState(true);
-  const [searched, setSearched] = useState(false);
   const [videoOpened, setVideoOpened] = useState(null);
   const [theme, setTheme] = useState("dark");
+  const [viewType, setViewType] = useState("board");
 
   useEffect(() => {
     const getVideos = async () => {
@@ -21,13 +22,15 @@ function App({ youtubeAPI }) {
   }, [youtubeAPI]);
 
   const onSearh = async (searchText) => {
-    setVideos([]);
-    setVideoOpened(null);
-    const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
-    const filteredVideos = searchedVideos.filter(
-      (video) => video.id.kind !== "youtube#playlist"
-    );
-    setVideos(filteredVideos);
+    if (!!searchText) {
+      setVideos([]);
+      const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
+      const filteredVideos = searchedVideos.filter(
+        (video) => video.id.kind !== "youtube#playlist"
+      );
+      setVideos(filteredVideos);
+      setViewType("search");
+    }
   };
 
   const onMenuClick = () => {
@@ -35,13 +38,14 @@ function App({ youtubeAPI }) {
     setMenuOpened(reversedState);
   };
 
-  const menuInSmallSizedWindow = (smallWindowSize) => {
-    smallWindowSize && setMenuOpened(false);
+  const windowInSmallSize = (windowSize) => {
+    windowSize && setMenuOpened(false);
   };
 
   const onVideoClick = (video) => {
     setMenuOpened(false);
     setVideoOpened(video);
+    setViewType("detail");
     const filteredList = videos
       .filter(filterChannel)
       .filter((curr) => video !== curr);
@@ -63,21 +67,19 @@ function App({ youtubeAPI }) {
       <div
         className={menuOpened && !!videoOpened ? styles.modalWrapper : ""}
       ></div>
-      <Header
-        onSearch={onSearh}
-        onMenuClick={onMenuClick}
-        setSearched={setSearched}
-      />
-      <Body
-        videoList={videos}
-        setVideos={setVideos}
-        menuOpened={menuOpened}
-        menuInSmallSizedWindow={menuInSmallSizedWindow}
-        searched={searched}
-        videoOpened={videoOpened}
-        onVideoClick={onVideoClick}
-        onThemeClick={onThemeClick}
-      />
+      <Header onSearch={onSearh} onMenuClick={onMenuClick} />
+      <ViewContext.Provider
+        value={{
+          state: { menuOpened, viewType, currVideo: videoOpened },
+          actions: { onVideoClick },
+        }}
+      >
+        <Body
+          videoList={videos}
+          menuInSmallSizedWindow={windowInSmallSize}
+          onThemeClick={onThemeClick}
+        />
+      </ViewContext.Provider>
     </ThemeContext.Provider>
   );
 }

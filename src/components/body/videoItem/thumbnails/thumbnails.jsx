@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import ViewContext from "../../../../contexts/view";
 
-const Thumbnails = ({ isChannel, thumbnails, isDetailView }) => {
+const Thumbnails = ({ isChannel, thumbnails }) => {
+  const { state } = useContext(ViewContext);
+  const { viewType } = state;
   if (isChannel) {
     return (
       <ImageBox>
@@ -11,7 +14,7 @@ const Thumbnails = ({ isChannel, thumbnails, isDetailView }) => {
   } else {
     return (
       <StyledThumbnails
-        isDetailView={isDetailView}
+        isDetailView={viewType === "detail"}
         src={thumbnails}
         alt="thumbnails"
       ></StyledThumbnails>

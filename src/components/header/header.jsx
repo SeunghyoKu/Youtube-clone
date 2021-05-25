@@ -5,14 +5,14 @@ import HeaderRightIcons from "./headerRightIcons";
 import styled from "styled-components";
 import ThemeContext from "../../contexts/theme";
 
-const Header = ({ onMenuClick, onSearch, setSearched }) => {
+const Header = ({ onMenuClick, onSearch }) => {
   const { theme } = useContext(ThemeContext);
 
   return (
     <>
       <HeaderBar theme={theme}>
         <Logo onMenuClick={onMenuClick} />
-        <SearchBar onSearch={onSearch} setSearched={setSearched} />
+        <SearchBar onSearch={onSearch} />
         <HeaderRightIcons />
       </HeaderBar>
     </>

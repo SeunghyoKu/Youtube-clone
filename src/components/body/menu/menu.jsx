@@ -3,14 +3,17 @@ import styled from "styled-components";
 import Icon from "../../icons/icon";
 import Moon from "../../icons/moon";
 import icons from "../../../service/icons";
-import ThemeContext from "../../../contexts/theme";
 
-const Menu = ({ menuOpened, menuInSmallSizedWindow, onThemeClick }) => {
-  const opened = menuOpened;
+import ThemeContext from "../../../contexts/theme";
+import ViewContext from "../../../contexts/view";
+
+const Menu = ({ menuInSmallSizedWindow, onThemeClick }) => {
   const iswindowSmall = window.innerWidth < 1200;
   menuInSmallSizedWindow(iswindowSmall);
 
   const { theme } = useContext(ThemeContext);
+  const { state } = useContext(ViewContext);
+  const { menuOpened: opened } = state;
 
   return (
     <MenuBar opened={opened} theme={theme}>
@@ -45,12 +48,12 @@ const MenuBar = styled.div`
   position: fixed;
   top: 59px;
   left: 0px;
-  width: ${(props) => (props.opened ? "240px" : "72px")};
+  width: ${({ opened }) => (opened ? "240px" : "72px")};
   height: 100%;
   padding: 12px 0px 12px 0px;
-  background-color: ${(props) =>
-    props.theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
-  color: ${(props) => (props.theme === "dark" ? "white" : "black")};
+  background-color: ${({ theme }) =>
+    theme === "dark" ? "rgba(33, 33, 33, 0.98)" : "white"};
+  color: ${({ theme }) => (theme === "dark" ? "white" : "black")};
   z-index: 2;
 
   @media (max-width: 800px) {
@@ -68,13 +71,13 @@ const MenuBar = styled.div`
 `;
 
 const MenuDiv = styled.div`
-  height: ${(props) => (props.opened ? " 40px" : "74px")};
+  height: ${({ opened }) => (opened ? "40px" : "74px")};
   padding: 0px 24px 0px 24px;
   display: flex;
-  flex-direction: ${(props) => (props.opened ? "row" : "column")};
+  flex-direction: ${({ opened }) => (opened ? "row" : "column")};
   align-items: center;
   cursor: pointer;
-  ${(props) => (props.opened ? "" : "justify-content: center")};
+  ${({ opened }) => (opened ? "" : "justify-content: center")};
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);
@@ -86,6 +89,6 @@ const MenuDiv = styled.div`
 `;
 
 const MenuSpan = styled.span`
-  font-size: ${(props) => (props.opened ? "14px" : "10px")};
+  font-size: ${({ opened }) => (opened ? "14px" : "10px")};
   text-align: center;
 `;
