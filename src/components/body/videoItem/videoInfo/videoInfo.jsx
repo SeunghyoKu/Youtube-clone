@@ -4,9 +4,15 @@ import NewVideoTag from "../newVIdeoTag/newVideoTag";
 import ThemeContext from "../../../../contexts/theme";
 import ViewContext from "../../../../contexts/view";
 
-const VideoInfo = (props) => {
-  const { title, channelTitle, elapsedTime } = props; // board
-  const { isVideo, description } = props; // search
+const VideoInfo = ({
+  title,
+  channelTitle,
+  elapsedTime,
+  isVideo,
+  description,
+}) => {
+  const decode = require("unescape");
+  const decodedTitle = decode(title);
 
   const { theme } = useContext(ThemeContext);
   const { state } = useContext(ViewContext);
@@ -15,7 +21,7 @@ const VideoInfo = (props) => {
   if (viewType === "board") {
     return (
       <StyledVideoInfo>
-        <Title theme={theme}>{title}</Title>
+        <Title theme={theme}>{decodedTitle}</Title>
         <P theme={theme}>{channelTitle}</P>
         <P theme={theme}>{elapsedTime}</P>
       </StyledVideoInfo>
@@ -23,7 +29,7 @@ const VideoInfo = (props) => {
   } else if (viewType === "search") {
     return (
       <VideoInfoSearched>
-        <TitleSearched theme={theme}>{title}</TitleSearched>
+        <TitleSearched theme={theme}>{decodedTitle}</TitleSearched>
         {isVideo ? <P theme={theme}>{channelTitle}</P> : ""}
         {isVideo ? <P theme={theme}>{elapsedTime}</P> : ""}
         <Description>{description}</Description>
@@ -34,7 +40,7 @@ const VideoInfo = (props) => {
     return (
       <VideoInfoDetailed>
         <Title theme={theme} viewType={viewType}>
-          {title}
+          {decodedTitle}
         </Title>
         <P theme={theme}>{channelTitle}</P>
         <P theme={theme}>{elapsedTime}</P>
