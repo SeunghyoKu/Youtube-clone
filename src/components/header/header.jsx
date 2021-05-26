@@ -3,7 +3,7 @@ import SearchBar from "./searchBar";
 import Logo from "./logo";
 import HeaderRightIcons from "./headerRightIcons";
 import styled from "styled-components";
-import ThemeContext from "../../contexts/theme";
+import ThemeContext from "contexts/theme";
 
 const Header = ({ onMenuClick, onSearch }) => {
   const { theme } = useContext(ThemeContext);

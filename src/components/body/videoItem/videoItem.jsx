@@ -6,7 +6,7 @@ import getElapsedTime from "../../../utils/getElapsedTime";
 import VideoInfo from "./videoInfo/videoInfo";
 import Thumbnails from "./thumbnails/thumbnails";
 import SubscribedButton from "../subscribeButton/subscribeButton";
-import ViewContext from "../../../contexts/view";
+import ViewContext from "contexts/view";
 
 const Video = ({ video }) => {
   const {

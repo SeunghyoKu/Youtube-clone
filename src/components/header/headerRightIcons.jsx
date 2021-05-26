@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import icons from "../../service/icons";
+import icons from "service/icons";
 import styled from "styled-components";
-import ThemeContext from "../../contexts/theme";
+import ThemeContext from "contexts/theme";
 
 const HeaderRightIcons = () => {
   const { theme } = useContext(ThemeContext);

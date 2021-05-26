@@ -3,8 +3,8 @@ import Menu from "./menu/menu";
 import Videos from "./videoList/videoList";
 import VideoDetail from "./videoDetail/videoDetail";
 import styled from "styled-components";
-import ThemeContext from "../../contexts/theme";
-import ViewContext from "../../contexts/view";
+import ThemeContext from "contexts/theme";
+import ViewContext from "contexts/view";
 
 const Body = ({ menuInSmallSizedWindow, videoList, onThemeClick }) => {
   const { theme } = useContext(ThemeContext);

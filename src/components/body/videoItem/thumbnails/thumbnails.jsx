@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import ViewContext from "../../../../contexts/view";
+import ViewContext from "contexts/view";
 
 const Thumbnails = ({ isChannel, thumbnails }) => {
   const { state } = useContext(ViewContext);

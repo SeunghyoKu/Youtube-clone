@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import icons from "../../service/icons";
-import ThemeContext from "../../contexts/theme";
+import icons from "service/icons";
+import ThemeContext from "contexts/theme";
 
 const Logo = ({ onMenuClick }) => {
   const { theme } = useContext(ThemeContext);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Video from "../videoItem/videoItem";
 import styled from "styled-components";
-import ViewContext from "../../../contexts/view";
+import ViewContext from "contexts/view";
 
 const Videos = ({ videoList }) => {
   const { state } = useContext(ViewContext);

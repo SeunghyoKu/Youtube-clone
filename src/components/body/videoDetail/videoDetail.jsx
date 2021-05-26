@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
 import SubscribeButton from "../subscribeButton/subscribeButton";
-import changeDate from "../../../utils/changeDate";
+import changeDate from "utils/changeDate";
 import styled from "styled-components";
-import ThemeContext from "../../../contexts/theme";
-import ViewContext from "../../../contexts/view";
+import ThemeContext from "contexts/theme";
+import ViewContext from "contexts/view";
 
 const VideoDetail = () => {
   const { state } = useContext(ViewContext);

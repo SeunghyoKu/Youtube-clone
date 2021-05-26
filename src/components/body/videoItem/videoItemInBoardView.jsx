@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import VideoInfo from "./videoInfo/videoInfo";
-import ViewContext from "../../../contexts/view";
+import ViewContext from "contexts/view";
 
 const VideoItemInBoardView = (props) => {
   const { onClick, thumbnails, title, channelTitle, elapsedTime } = props;

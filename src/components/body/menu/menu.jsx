@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import Icon from "../../icons/icon";
-import Moon from "../../icons/moon";
-import icons from "../../../service/icons";
+import Icon from "components/icons/icon";
+import Moon from "components/icons/moon";
+import icons from "service/icons";
 
-import ThemeContext from "../../../contexts/theme";
-import ViewContext from "../../../contexts/view";
+import ThemeContext from "contexts/theme";
+import ViewContext from "contexts/view";
 
 const Menu = ({ menuInSmallSizedWindow, onThemeClick }) => {
   const iswindowSmall = window.innerWidth < 1200;

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import NewVideoTag from "../newVIdeoTag/newVideoTag";
-import ThemeContext from "../../../../contexts/theme";
-import ViewContext from "../../../../contexts/view";
+import ThemeContext from "contexts/theme";
+import ViewContext from "contexts/view";
 
 const VideoInfo = ({
   title,
