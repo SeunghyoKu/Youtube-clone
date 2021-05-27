@@ -13,16 +13,15 @@ const Body = ({ menuInSmallSizedWindow, videoList, onThemeClick }) => {
 
   return (
     <BodyDiv theme={theme}>
-      {(menuOpened && viewType === "detail") || viewType !== "detail" ? (
-        <Menu
-          menuInSmallSizedWindow={menuInSmallSizedWindow}
-          onThemeClick={onThemeClick}
-        />
-      ) : (
-        ""
-      )}
+      {(menuOpened && viewType === "detail") ||
+        (viewType !== "detail" && (
+          <Menu
+            menuInSmallSizedWindow={menuInSmallSizedWindow}
+            onThemeClick={onThemeClick}
+          />
+        ))}
       <section>
-        {viewType === "detail" ? <VideoDetail /> : ""}
+        {viewType === "detail" && <VideoDetail />}
         <Videos videoList={videoList} />
       </section>
     </BodyDiv>

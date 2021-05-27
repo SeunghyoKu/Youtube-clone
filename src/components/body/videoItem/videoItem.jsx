@@ -53,7 +53,7 @@ const Video = ({ video }) => {
           isVideo={!isChannel}
           elapsedTime={getElapsedTime(publishedAt)}
         />
-        {isChannel ? <SubscribedButton /> : ""}
+        {isChannel && <SubscribedButton />}
       </VideoItemSearched>
     );
   } else if (viewType === "board") {
