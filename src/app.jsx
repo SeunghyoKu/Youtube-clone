@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/header/header";
 import Body from "./components/body/body";
 
-import styles from "./app.module.css";
+import styled from "styled-components";
 import ThemeContext from "./contexts/theme";
 import ViewContext from "./contexts/view";
 
@@ -77,7 +77,9 @@ function App({ youtubeAPI }) {
 
   return (
     <ThemeContext.Provider value={{ theme }}>
-      <div className={menuOpened && !!videoOpened && styles.modalWrapper}></div>
+      {menuOpened && videoOpened && (
+        <ModalWrapper onClick={() => onMenuClick()} />
+      )}
       <Header onSearch={onSearh} onMenuClick={onMenuClick} />
       <ViewContext.Provider
         value={{
@@ -96,3 +98,12 @@ function App({ youtubeAPI }) {
 }
 
 export default App;
+
+const ModalWrapper = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 50%;
+  background: black;
+`;

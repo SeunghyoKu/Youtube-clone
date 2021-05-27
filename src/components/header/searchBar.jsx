@@ -7,6 +7,7 @@ const SearchBar = ({ onSearch }) => {
   const inputRef = useRef();
   const { theme } = useContext(ThemeContext);
 
+  // DOM을 가져와서 사용하기 위해 useRef 사용하기
   const onSubmit = () => {
     const searchText = inputRef.current.value;
     onSearch(searchText);
@@ -17,6 +18,7 @@ const SearchBar = ({ onSearch }) => {
     onSubmit();
   };
 
+  // 검색은 enter를 눌러도 되게끔 하기
   const onKeyPress = (e) => {
     e.preventDefault();
     if (e.key === "Enter") {
