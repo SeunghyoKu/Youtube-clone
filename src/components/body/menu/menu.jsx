@@ -79,7 +79,7 @@ const MenuDiv = styled.div`
   flex-direction: ${({ opened }) => (opened ? "row" : "column")};
   align-items: center;
   cursor: pointer;
-  ${({ opened }) => (opened ? "" : "justify-content: center")};
+  ${({ opened }) => !opened && "justify-content: center"};
 
   &:hover {
     background-color: rgba(255, 255, 255, 0.1);

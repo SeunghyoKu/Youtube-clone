@@ -77,9 +77,7 @@ function App({ youtubeAPI }) {
 
   return (
     <ThemeContext.Provider value={{ theme }}>
-      <div
-        className={menuOpened && !!videoOpened ? styles.modalWrapper : ""}
-      ></div>
+      <div className={menuOpened && !!videoOpened && styles.modalWrapper}></div>
       <Header onSearch={onSearh} onMenuClick={onMenuClick} />
       <ViewContext.Provider
         value={{

@@ -14,13 +14,11 @@ const Body = ({ menuInSmallSizedWindow, videoList, onThemeClick }) => {
   return (
     // 디테일 화면에서는 왼쪽 메뉴 바가 보이지 않는 것이 default 이므로
     <BodyDiv theme={theme}>
-      {(menuOpened && viewType === "detail") || viewType !== "detail" ? (
+      {((menuOpened && viewType === "detail") || viewType !== "detail") && (
         <Menu
           menuInSmallSizedWindow={menuInSmallSizedWindow}
           onThemeClick={onThemeClick}
         />
-      ) : (
-        ""
       )}
       <section>
         {viewType === "detail" && <VideoDetail />}

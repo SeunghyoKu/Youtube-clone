@@ -30,8 +30,8 @@ const VideoInfo = ({
     return (
       <VideoInfoSearched>
         <TitleSearched theme={theme}>{decodedTitle}</TitleSearched>
-        {isVideo ? <P theme={theme}>{channelTitle}</P> : ""}
-        {isVideo ? <P theme={theme}>{elapsedTime}</P> : ""}
+        {isVideo && <P theme={theme}>{channelTitle}</P>}
+        {isVideo && <P theme={theme}>{elapsedTime}</P>}
         <Description>{description}</Description>
         <NewVideoTag elapsedTime={elapsedTime} />
       </VideoInfoSearched>
@@ -81,7 +81,7 @@ const Title = styled.h3`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-  margin: ${({ viewType }) => (viewType === "detail" ? "0px" : "")};
+  margin: ${({ viewType }) => viewType === "detail" && "0px"};
 `;
 
 const TitleSearched = styled.h3`

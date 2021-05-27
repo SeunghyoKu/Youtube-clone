@@ -115,9 +115,9 @@ const Bar = styled.div`
 
 const Description = styled.p`
   margin-right: 120px;
-  height: ${(props) => (props.learnMore ? "54px" : "")};
-  margin-right: ${(props) => (props.learnMore ? "120px" : "")};
-  overflow: ${(props) => (props.learnMore ? "hidden" : "")};
+  height: ${(props) => props.learnMore && "54px"};
+  margin-right: ${(props) => props.learnMore && "120px"};
+  overflow: ${(props) => props.learnMore && "hidden"};
   @media (max-width: 410px) {
     margin-right: 0px;
   }
