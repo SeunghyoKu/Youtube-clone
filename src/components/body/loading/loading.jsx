@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
 import ThemeContext from "contexts/theme";
 import ViewContext from "contexts/view";
+
 const Loading = (props) => {
   const { theme } = useContext(ThemeContext);
   const { state } = useContext(ViewContext);

@@ -6,6 +6,8 @@ class YoutubeAPI {
     this.key = process.env.REACT_APP_API_KEY;
     this.maxResults = 20;
   }
+
+  // 인기 비디오 가져오기
   async getFamousVideos() {
     return await axios
       .get(
@@ -20,6 +22,8 @@ class YoutubeAPI {
         return [];
       });
   }
+
+  // 키워드로 검색해 비디오 가져오기
   async getSearchWithText(searchText) {
     return await axios
       .get(

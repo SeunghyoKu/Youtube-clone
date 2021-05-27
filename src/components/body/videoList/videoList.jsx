@@ -23,6 +23,7 @@ const Videos = ({ videoList }) => {
       </main>
     );
   } else {
+    // 디테일 화면일 때 스타일이 달라 구분함
     return (
       <main>
         <VideoListInDetailView>
@@ -45,7 +46,6 @@ const VideoList = styled.ul`
     menuOpened ? "83px 0px 0px 240px" : "83px 0px 0px 72px"};
   @media (max-width: 800px) {
     padding-left: 0px;
-    color: red;
   }
 `;
 

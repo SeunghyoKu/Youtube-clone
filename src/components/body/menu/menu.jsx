@@ -16,6 +16,8 @@ const Menu = ({ menuInSmallSizedWindow, onThemeClick }) => {
   const { menuOpened: opened } = state;
 
   return (
+    // 메뉴 Bar 안에 각 메뉴 하나씩을 담고 있는 MenuDiv가 존재함
+    // Icon은 svg를 이용하였는데, d값이 모양에 영향을 주어 d 값만 받아 인자로 넣어줌
     <MenuBar opened={opened} theme={theme}>
       <MenuDiv opened={opened}>
         <Icon opened={opened} d={icons.home} theme={theme} home={true} />

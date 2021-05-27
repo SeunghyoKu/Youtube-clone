@@ -8,9 +8,12 @@ import ViewContext from "contexts/view";
 const VideoDetail = () => {
   const { state } = useContext(ViewContext);
   const { currVideo: video } = state;
+
+  // 검색 시, 인기 영상시 api 반환 값이 달라 삼항 연산자 사용
   const videoId = video.id.videoId ? video.id.videoId : video.id;
   const { title, channelTitle, publishedAt, description } = video.snippet;
 
+  // 더보기가 꺼져있을 경우, overflow: hidden 해주어 안 보이게 했습니다
   const [learnMore, setLearnMore] = useState(true);
   const { theme } = useContext(ThemeContext);
 

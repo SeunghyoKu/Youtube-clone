@@ -18,18 +18,23 @@ const Video = ({ video }) => {
   } = video.snippet;
 
   const { kind } = video.id;
+
+  // 채널일 경우 구독 버튼 달기 위해
   const isChannel = kind && /channel/.test(kind);
 
   const { state, actions } = useContext(ViewContext);
   const { viewType } = state;
   const { onVideoClick } = actions;
 
+  // 채널을 보여주는 것은 구현하지 않아 비디오만 보여줍니다
   const onClick = () => {
     if (!isChannel) {
       onVideoClick(video);
     }
   };
 
+  // 화면 유형 별로 보여지는 정보가 다 달라서
+  // detail, search, board 별로 나누었습니다
   if (viewType === "detail") {
     return (
       <VideoItem onClick={onClick}>
