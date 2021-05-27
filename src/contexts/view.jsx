@@ -5,6 +5,7 @@ const ViewContext = createContext({
     menuOpened: true,
     viewType: "board",
     currVideo: null,
+    loading: false,
   },
   actions: {
     onVideoClick: () => {},

@@ -2,10 +2,15 @@ import React, { useContext } from "react";
 import Video from "../videoItem/videoItem";
 import styled from "styled-components";
 import ViewContext from "contexts/view";
+import Loading from "../loading/loading";
 
 const Videos = ({ videoList }) => {
   const { state } = useContext(ViewContext);
-  const { menuOpened, viewType } = state;
+  const { menuOpened, viewType, loading } = state;
+
+  if (loading) {
+    return <Loading />;
+  }
 
   if (viewType !== "detail") {
     return (

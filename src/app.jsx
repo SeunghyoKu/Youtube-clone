@@ -12,10 +12,13 @@ function App({ youtubeAPI }) {
   const [videoOpened, setVideoOpened] = useState(null);
   const [theme, setTheme] = useState("dark");
   const [viewType, setViewType] = useState("board");
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const getVideos = async () => {
+      setLoading(true);
       const famousVideos = await youtubeAPI.getFamousVideos();
+      setLoading(false);
       setVideos(famousVideos);
     };
     getVideos();
@@ -24,7 +27,9 @@ function App({ youtubeAPI }) {
   const onSearh = async (searchText) => {
     if (!!searchText) {
       setVideos([]);
+      setLoading(true);
       const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
+      setLoading(false);
       const filteredVideos = searchedVideos.filter(
         (video) => video.id.kind !== "youtube#playlist"
       );
@@ -70,7 +75,7 @@ function App({ youtubeAPI }) {
       <Header onSearch={onSearh} onMenuClick={onMenuClick} />
       <ViewContext.Provider
         value={{
-          state: { menuOpened, viewType, currVideo: videoOpened },
+          state: { menuOpened, viewType, currVideo: videoOpened, loading },
           actions: { onVideoClick },
         }}
       >
