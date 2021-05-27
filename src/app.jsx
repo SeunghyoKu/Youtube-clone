@@ -29,6 +29,7 @@ function App({ youtubeAPI }) {
   const onSearh = async (searchText) => {
     if (!!searchText) {
       setVideos([]);
+      setViewType("search");
       setLoading(true);
       const searchedVideos = await youtubeAPI.getSearchWithText(searchText);
       setLoading(false);
@@ -36,7 +37,6 @@ function App({ youtubeAPI }) {
         (video) => video.id.kind !== "youtube#playlist"
       );
       setVideos(filteredVideos);
-      setViewType("search");
     }
   };
 
